@@ -151,16 +151,15 @@ A: No.
 
 Q(footer): Would you like me to add a footer?  It will have a copyright notice for your chapter for the year 2017.
 A: Yes.
-	DOC(13.1):<section> <center>© 2017 | <i><x>hostchapter</x></i> Legal Hackers</center></section>
-	Q(13.1):GOTO:14
+	DOC(13.1):<section> <center> © 2017 | <i><x>hostchapter</x></i> Legal Hackers</center></section>
+	Q(13.1):GOTO:readyquery
 A: No.
-	Q(13.2):GOTO:14
+	Q(13.2):GOTO:readyquery
 
-Q(14): Are you ready to see your site?
+Q(readyquery): Are you ready to see your site?
 A[javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Basic Hackathon Site')]: Yes, as text on a web-based editor.
 A[javascript:save2('LH_Hackathon_Markdown.txt',doc());]: As a file I can save (best for pasting into a markdown editor).
 
-	Q(14.2): Thank you.
-											
-
 Q(15):  Thanks for stopping by!
+
+<!--© 2017 Mark Potkewitz -->
