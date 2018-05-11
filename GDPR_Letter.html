@@ -1,0 +1,1459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+<HEAD>
+	<title>BLIP LTL GDPR Letter Tool</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<meta name="apple-mobile-web-app-capable" content="no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content=""/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="apple-touch-icon" href="https://www.qnamarkup.org/images/QnA_300.png"/>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+</HEAD>
+<BODY BGCOLOR="#ffffff" BACKGROUND="" MARGINWIDTH="0" MARGINHEIGHT="0" onLoad="startAT('1');"><style>	
+
+	body {
+
+		font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+
+	}
+
+
+
+	#rawmarkup{
+
+		display:none;
+
+	}
+
+	
+
+	#QandA img{
+
+		width:100%;
+
+	}
+
+
+
+	div.main{
+
+		min-width:300px;
+
+		max-width:650px;
+
+		margin: 0 auto;
+
+	padding:0 5px 0 5px;
+
+		}
+
+	div.frame{
+
+		float:left;
+
+		width:100%;
+
+		margin:5px 0 5px 0;
+
+	}
+
+	div.full{
+
+		float:left;
+
+		width:100%;
+
+	}
+
+	.button{
+
+		padding:8px;
+
+		margin:8px 0 0px 0;
+
+		width:100%;
+
+	}
+
+	div.question_text{
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		color:#000000;
+
+		min-width:30px;
+
+		background:#f5dd87;
+
+		border-radius: 15px;
+
+		padding:10px 15px 14px 15px;
+
+		margin-right:45px;
+
+	}
+
+
+
+	div.question_text a:link, div.question_text a:hover, div.question_text a:active, div.question_text a:visited{ color:#e3fbfc; } 
+
+
+
+	div.question_arrow{
+
+		float:left; 
+
+		width: 0; 
+
+		height: 0; 
+
+		border-left: 5px solid transparent; 
+
+		border-right: 10px solid transparent; 
+
+		border-top: 15px solid #f5dd87;
+
+		margin:0 20px;
+
+	}
+
+	div.ans_text{
+
+		float:right;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		color:#000000;
+
+		min-width:30px;
+
+		background:#eeeeee;
+
+		border-radius: 15px;
+
+		padding:10px 15px 14px 15px;
+
+		margin-left:45px;
+
+	}
+
+	div.ans_arrow{
+
+		float:right; 
+
+		width: 0; 
+
+		height: 0; 
+
+		border-left: 10px solid transparent; 
+
+		border-right: 5px solid transparent; 
+
+		border-top: 15px solid #eeeeee;
+
+		margin:0 20px;
+
+	}
+
+	div.choices{
+
+		float:left;
+
+		width:100%;
+
+		margin:15px 0 0 0;
+
+	}
+
+	div.standard_buttons{
+
+		float:left;
+
+		width:100%;
+
+		margin-top:5px;
+
+		border-top: 1px solid #ddd; 
+
+		padding-top:12px;		
+
+	}
+
+	div.credits{
+
+		float:left;
+
+		dispaly:none;
+
+		width:100%;
+
+		background:#eee;
+
+		margin:0px 0 15px 0;
+
+	}
+
+	div.credit_text{
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		padding:4px 15px 10px 15px;
+
+	}
+
+	li.error{
+
+		list-style-type: none;
+
+		background:#ffdddd;
+
+		margin: 10px 0 0 0;
+
+		padding: 5px;
+
+	}
+
+
+
+	.qpad {
+
+		float:left;
+
+		padding:0 15px;
+
+	}
+
+	
+
+	a.sbutton {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:48%;
+
+		background: #eee;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 3px 0;
+
+		border: solid 1px #888;
+
+		text-align:center;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+
+
+	a.sbutton:hover, a.sbutton:active {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:48%;
+
+		background: #ddd;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 3px 0;
+
+		border: solid 1px #888;
+
+		text-align:center;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+
+
+	a.qabutton {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:100%;
+
+		background: #eee;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 8px 0;
+
+		border: solid 1px #888;
+
+		text-align:left;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+
+
+	a.qabutton:hover, a.qabutton:active {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:100%;
+
+		background: #ddd;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 8px 0;
+
+		border: solid 1px #888;
+
+		text-align:left;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+	
+
+
+
+	div.xdiv {
+
+		float:left;
+
+		width:100%;
+
+		margin: 0 0 8px 0;
+
+		background: #eee;
+
+		border: solid 1px #888;
+
+		border-radius: 8px;
+
+	}	
+
+
+
+	input.xinput {
+
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+
+		-moz-box-sizing: border-box;    /* Firefox, other Gecko */ 
+
+		box-sizing: border-box;         /* Opera/IE 8+ */
+
+		float:left;
+
+		width:100%;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		background: #fff;
+
+		border-top-left-radius: 8px;
+
+		border-top-right-radius: 8px;
+
+		padding:10px 10px 12px 10px;
+
+		border: solid 0px #888;
+
+		border-bottom: solid 1px #888;
+
+		text-align:left;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+	
+
+	a.xbutton {
+
+		float:left;
+
+		width:100%;
+
+		text-align:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		background: #eee;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0px;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+	
+
+	a.xbutton:hover, a.xbutton:active {
+
+		border-top-left-radius: 0px;
+
+		border-top-right-radius: 0px;
+
+		background: #ddd;
+
+	}
+
+</style>
+<FORM name="FORM" id="FORM"><div id="conversation" style="margin:15px auto 0 auto;padding:0 15px;max-width:500px"><div id='QandA' class='QandA'><div style='padding:15px;background:#ddffdd;text-align:center;'>Loading QnA...</div></div><div id='Choices' class='choices'></div><div id="rawmarkup" style="display:none;">%3C%21--+this+is+a+work+in+progress+made+possible+by+a+grant+from+the+Ewing+Marion+Kauffman+Foundation+in+cooperation+with+the+LTL+Network--%3E%0D%0A%0D%0AQ%28LETTER_WIP%29%3A+This+is+the+GDPR+letter+generation+tool.%3Cbr%3E%3Cbr%3E+It+is+a+work-in-progress%2C+so+not+all+answer+fields+will+be+populated%2C+and+there+may+be+some+broken+fields.%0D%0AA%3A+I+understand.%0D%0A%09Q%281.1%29%3A+Great.++Thanks+for+giving+it+a+spin%21+If+you+find+any+errors+or+broken+parts%2C+please+%3Ca+href%3D%22mailto%3Ablip%40brooklaw.edu%3Fsubject%3DGDPR%2520QnA%2520Feedback%2520UID20180525%22%3Esend+us+a+note%3C%2Fa%3E.+Thanks%21%0D%0A%09A%3AOkay%21++We+will%21%0D%0A%09%09Q%281.1.1%29%3AThanks.++You%27re+the+best%21GOTO%3ALETTER_START%0D%0A%09%09%0D%0AQ%28LETTER_START%29%3A+Welcome+to+the+LTL+GDPR+Letter+tool.+%3Cbr%3E%3Cbr%3E+We%27re+going+to+ask+you+several+questions+to+help+identify+potential+risk+areas+for+you+to+speak+about+with+your+attorney.%0D%0AA%3A+Got+it.%0D%0A%09Q%282.1%29%3A+At+the+end%2C+we%27ll+draft+a+letter+for+you+to+send+to+your+attorney+to+help+identify+areas+of+potential+GDPR+Compliance+risk.%0D%0A%09A%3A+Got+it.%0D%0A%09%09Q%282.1.1%29%3AGOTO%3ALETTER_DISCLAIMER%0D%0A%0D%0AQ%28LETTER_DISCLAIMER%29%3A+We%27re+about+to+get+to+the+good+part.+%3Cbr%3E%3Cbr%3E+But%2C+before+we+do%2C+we+need+to+go+over+a+few+things+with+you.%0D%0AA%3A+Okay%2C+I%27m+ready.%0D%0A%09Q%283.1%29%3A+This+is+the+second+part+of+the+BLIP+LTL+GDPR+Learning+Tool.++If+you+haven%27t+already+done+so%2C+you+should+check+out+that+tool+by+%3Ca+href%3D%22https%3A%2F%2Fpotkewitz.github.io%2FQnA%2FGDPR_Learner.html%22+target%3D%22_blank%22%3E+clicking+here%3C%2Fa%3E.%0D%0A%09A%3A+Wow.++Okay.++Thanks.++I+haven%27t+been+to+that+site+yet+and+will+go+right+now%21%0D%0A%09%09Q%283.1.1%29%3A+Great.GOTO%3AENDRUN%0D%0A%09A%3A+Why+should+I+check+out+that+tool%3F%0D%0A%09%09Q%283.1.2%29%3A+The+tool+has+%3Ci%3Ea+lot%3C%2Fi%3E+of+useful+information+about+the+GDPR+and+how+it+could+affect+you+and+your+business.++If+you%27re+unfamiliar+with+the+GDPR%2C+it%27s+a+good+place+to+start.%0D%0A%09%09A%3A+Okay.++I%27ll+check+it+out.%0D%0A%09%09%09Q%283.1.2.1%29%3AGOTO%3AENDRUN%0D%0A%09%09A%3A+Meh.++Not+for+me.++I%27d+like+to+stick+with+this.%0D%0A%09%09%09Q%283.1.2.2%29%3A+You+really+should+%3Ca+href%3D%22https%3A%2F%2Fpotkewitz.github.io%2FGDPR_Learner.html%22+target%3D%22_blank%22%3Echeck+it+out.%3C%2Fa%3E%0D%0A%09%09%09A%3A+Okay.++You%27ve+convinced+me.%0D%0A%09%09%09%09Q%283.1.2.2.1%29%3AGOTO%3AENDRUN%0D%0A%09%09%09A%3A+I+would+really+rather+not.++I%27m+already+%3Ci%3Ehere%3C%2Fi%3E+and+would+like+to+move+on.%0D%0A%09%09%09%09Q%283.1.2.2.2%29%3AIf+you+insist.GOTO%3AREAL_DISCLAIMER%0D%0A%09A%3A+I+have+already+seen+the+learning+tool.+That%27s+how+I+got+here%21%0D%0A%09%09Q%283.1.3%29%3A+Oh%2C+okay.++So+you%27re+not+new+at+this.++Great%21GOTO%3AREAL_DISCLAIMER%0D%0A%09A%3A+I+don%27t+care+about+that+other+thing.++I+wanna+keep+checking+this+out%21%0D%0A%09%09Q%283.1.4%29%3A+You+really+should+check+that+site+out+first%2C+but+if+you+insist.GOTO%3AREAL_DISCLAIMER%0D%0A%0D%0AQ%28REAL_DISCLAIMER%29%3A+Before+we+go+any+further%2C+we+need+to+go+over+some+legal+business.%0D%0AA%3A+Oh.++Figures.++Let%27s+do+it.%0D%0A%09Q%284.1%29%3AOkay.++This+tool+shall+not+be+construed+as+legal+advice+of+any+kind.++If+you+have+any+legal+questions+or+concerns%2C+you+should+contact+an+attorney.%0D%0A%09A%3A+I+understand+that+this+is+not+legal+advice.%0D%0A%09%09Q%284.1.1%29%3A+Terrific.++In+addition%2C+we+are+not+entering+into+an+agreement+to+represent+you%2C+and+nothing+in+this+tool+should+be+understood+as+an+offer+to+enter+into+an+attorney%2Fclient+relationship+with+you.%0D%0A%09%09A%3A+Okay.++I+also+understand+that+we+are+not+entering+into+an+attorney%2Fclient+relationship.%0D%0A%09%09%09Q%284.1.1.1%29%3A+This+tool+is+meant+to+help+you+learn+a+bit+about+the+GDPR+and+identify+some+areas+about+which+you+should+speak+with+an+attorney.%0D%0A%09%09%09A%3A+I+think+it%27s+great+that+this+is+only+a+learning+tool.%0D%0A%09%09%09%09Q%284.1.1.1.1%29%3A+And%2C+finally%2C+if+you+have+%3Ci%3Eany%3C%2Fi%3E+legal+questions%2C+you+should+speak+with+an+attorney.%0D%0A%09%09%09%09A%3A+Of+course+I%27ll+speak+with+an+attorney+if+I+have+any+legal+questions.%0D%0A%09%09%09%09%09Q%284.1.1.1.1.1%29%3A+Terrific.++Let%27s+get+started.GOTO%3APURGATORY%0D%0A%0D%0AQ%28PURGATORY%29%3A+Alright.++We+are+going+to+ask+you+some+information+about+you+and+your+business+soon.++But%2C+do+you+have+any+questions+for+us+before+we+begin%3F%0D%0AA%3A+Yes%0D%0A%09Q%28ROUND1%29%3A+What+would+you+like+to+know%3F%0D%0A%09A%3A+What+sort+of+questions+will+you+be+asking%3F%0D%0A%09%09Q%285.1.1%29%3A+We+will+ask+for+some+basic+biographical+information%2C+such+as+your+name%2C+the+name+of+your+business%2C+if+you+have+a+lawyer+and+the+name+of+that+lawyer.%0D%0A%09%09A%3A+Why+do+you+need+this+information%3F%0D%0A%09%09%09Q%285.1.1.1%29%3A+At+the+end+of+this%2C+together+we%27ll+have+drafted+an+email+outlining+some+areas+you+should+probably+discuss+with+your+lawyer.%0D%0A%09%09%09A%3A+What+do+you+do+with+that+information%3F%0D%0A%09%09%09%09Q%285.1.1.1.1%29%3A+We+only+use+it+to+populate+the+email.++%3Cbr%3E%3Cbr%3EWe+provide+you+with+pseudonyms+you+can+use+if+you%27d+rather+fill+that+info+in+youself.%0D%0A%09%09%09%09A%3A+Okay.++I+have+more+questions.%0D%0A%09%09%09%09%09Q%285.1.1.1.1.1%29%3AGOTO%3AROUND1%0D%0A%09A%3A+This+is+format+is+really+cool%21++What+is+it%3F%0D%0A%09%09Q%285.1.2%29%3A+Thanks+for+noticing%21++This+was+built+using+a+markup+language+called+QnA+built+by+%3Ca+href%3D%22http%3A%2F%2Fwww.davidcolarusso.com%2Fattorney%2F%22+target%3D%22_blank%22%3EDavid+Colarusso%3C%2Fa%3E.++%3Cbr%3E%3Cbr%3EYou+can+build+your+own+interactive+QnA+by+visiting+the+%3Ca+href%3D%22http%3A%2F%2Fwww.qnamarkup.org%2F%22+target%3D%22_blank%22%3EQnA+Markup+Editor+%28still+in+beta%29%3C%2Fa%3E.%0D%0A%09%09A%3A+Thanks.++I+have+more+questions.%0D%0A%09%09%09Q%285.1.2.1%29%3AGOTO%3AROUND1%0D%0A%09%09A%3A+Gotcha.++That+covers+it.++I%27m+ready+to+get+down+to+business%21%0D%0A%09%09%09Q%285.1.2.2%29%3AGOTO%3AUSER_NAME%0D%0AA%3A+No.%0D%0A%09Q%285.2%29%3A+Are+you+sure%3F%0D%0A%09A%3A+Yes%2C+I%27m+sure.%0D%0A%09%09Q%285.2.1%29%3AGOTO%3AUSER_NAME%0D%0A%09A%3A+No.++Actually+I+have+some+questions.%0D%0A%09%09Q%285.2.2%29%3AGOTO%3AROUND1%0D%0A%0D%0A%0D%0AQ%28USER_NAME%29%3A+What%27s+your+full+name%3F%0D%0AX%3A%0D%0A%09Q%286.1%29%3AGOTO%3ABIZ_NAME%0D%0AA%3A+John+Doe.%0D%0A%09Q%286.2%29%3AGOTO%3ABIZ_NAME%0D%0AA%3A+Jane+Doe.%0D%0A%09Q%286.3%29%3AGOTO%3ABIZ_NAME%0D%0A%0D%0AQ%28BIZ_NAME%29%3A+What%27s+your+business+called%3F%0D%0AX%3A%0D%0A%09Q%287.1%29%3AGOTO%3AGC_YorN%0D%0AA%3A+Acme+Anvils%2C+Inc.%0D%0A%09Q%287.2%29%3AGOTO%3AGC_YorN%0D%0A%0D%0AQ%28GC_YorN%29%3ADoes+your+business+have+a+general+counsel%2C+or+do+you+work+with+a+lawyer%3F%0D%0AA%3A+Yes.%0D%0A%09Q%28LAWYER_FIRST%29%3A+What%27s+your+lawyer%27s+first+name%3F%0D%0A%09X%3A%0D%0A%09%09DOC%288.1.1%29%3A+Dear+%3Cx%3ELAWYER_FIRST%3C%2Fx%3E%2C%3Cbr%3E%3Cbr%3E%0D%0A%09%09Q%288.1.1%29%3AGOTO%3APD6%0D%0AA%3ANo.++We+don%27t+have+a+lawyer+yet.%0D%0A%09DOC%288.2%29%3A+Dear+FUTURE+LAWYER+WE+WILL+NEED%2C%3Cbr%3E%3Cbr%3E%0D%0A%09Q%288.2%29%3AGOTO%3APD6%0D%0A%0D%0AQ%28PD6%29%3AOkay%2C+that%27s+the+end+of+the+optional+personal+questions.++From+here+on+out%2C+you%27ll+need+to+answer+these+questions+in+order+for+us+to+get+you+accurate+answers+for+the+letter+to+work.%0D%0AA%3A+Okay.%0D%0A%09Q%289.1%29%3AGOTO%3Aincorporation_site%0D%0AA%3A+Why+do+you+need+this+information%3F%0D%0A%09Q%289.2%29%3A+In+order+to+assess+your+potential+GDPR+compliance+risks%2C+we+will+need+some+information+about+your+business.%0D%0A%09A%3A+Okay.%0D%0A%09%09Q%289.2.1%29%3AGOTO%3Aincorporation_site%0D%0A%0D%0AQ%28incorporation_site%29%3A+Okay.++Is+your+firm+incorporated+in+the+European+Union%3F%0D%0AA%3A+Yes.%0D%0A%09DOC%2810.1%29%3A++We+are+incorporated+in+the+EU%2C+and+we+have+some+questions+about+the+General+Data+Protection+Regulation+%28GDPR%29+and+how+it+might+affect+our+business.++%3Cbr%3E%3Cbr%3EWe+have+looked+into+the+regulation+a+bit+and+compiled+a+list+of+things+we+would+like+to+discuss+with+you.%0D%0A%09Q%2810.1%29%3AGOTO%3ABRICK_AND_MORTAR%0D%0AA%3A+No.%0D%0A%09DOC%2810.2%29%3A++Though+we+are+not+incorporated+in+the+EU%2C+we+have+some+questions+about+the+General+Data+Protection+Regulation+%28GDPR%29+and+how+it+might+affect+our+business.+%3Cbr%3E%3Cbr%3EWe+have+looked+into+the+regulation+a+bit+and+compiled+a+list+of+things+we+would+like+to+discuss+with+you.%0D%0A%09Q%2810.2%29%3AGOTO%3ABRICK_AND_MORTAR%0D%0AA%3A+I%27m+not+sure%0D%0A%09DOC%2810.3%29%3A++Although+we+don%27t+recall+where+we%27re+incorporated%2C+we+have+some+questions+about+the+General+Data+Protection+Regulation+%28GDPR%29+and+how+it+might+affect+our+business.+%3Cbr%3E%3Cbr%3EWe+have+looked+into+the+regulation+a+bit+and+have+compiled+a+list+of+things+we+would+like+to+discuss+with+you.%0D%0A%09Q%2810.3%29%3AGOTO%3ABRICK_AND_MORTAR%0D%0A%0D%0AQ%28BRICK_AND_MORTAR%29%3A+Do+you+have+any+brick+and+mortar+locations+in+the+EU%3F%0D%0AA%3A+Yes.%0D%0A%09DOC%2811.1%29%3A+Since+we+have+at+least+one+brick+and+mortar+location+in+the+EU%2C+we+have+concerns+that+we+may+be+subject+to+the+GDPR.++%3Cbr%3E%3Cbr%3EWe+have+identified+a+few+major+points+that+we+think+will+help+focus+our+conversation.%3C%3Cul%3E%0D%0A%09Q%2811.1%29%3AGOTO%3ADATA1%0D%0AA%3A+No.%0D%0A%09DOC%2811.2%29%3A+Though+we+do+not+have+any+brick+and+mortar+stores+in+the+EU%2C+we+have+some+concerns+that+we+may+be+subject+to+the+GDPR.+%3Cbr%3E%3Cbr%3EWe+have+identified+a+few+major+points+that+we+think+will+help+focus+our+conversation.%3Cul%3E%0D%0A%09Q%2811.2%29%3AGOTO%3ADATA1%0D%0AA%3A+I%27m+not+sure%0D%0A%09DOC%2811.3%29%3A+We%27re+not+sure+whether+we+have+any+brick+and+mortar+stores+in+the+EU%2C+but+we+do+have+some+concerns+that+way+may+be+subject+to+the+GDPR.%3Cbr%3E%3Cbr%3EWe+have+identified+a+few+major+points+that+we+think+will+help+focus+our+conversation.%3Cp%3E%3Cul%3E%0D%0A%09Q%2811.3%29%3AGOTO%3ADATA1%0D%0A%0D%0AQ%28DATA1%29%3A+Do+you+collect+data+on+your+users%2C+employees%2C+vendors%2C+or+service+providers%3F%0D%0AA%3A+Yes%0D%0A%09DOC%2812.1%29%3A%3Cli%3EWe+do+collect+data+on+our+users.%3C%2Fli%3E%0D%0A%09Q%2812.1%29%3AGOTO%3AEU_FOCUS%0D%0AA%3A+No%0D%0A%09DOC%2812.2%29%3A%3Cli%3EWe+do+not+collect+data+on+our+users.%3C%2Fli%3E%0D%0A%09Q%2812.2%29%3AGOTO%3AEU_FOCUS%0D%0AA%3A+I%27m+not+sure%0D%0A%09DOC%2812.3%29%3A%3Cli%3EWe%27re+not+not+sure+if+we+collect+data+on+our+users.%3C%2Fli%3E%0D%0A%09Q%2812.3%29%3AGOTO%3AEU_FOCUS%0D%0A%0D%0AQ%28EU_FOCUS%29%3ADo+you+have+any+users%2C+customers%2C+employees%2C+or+vendors+in+the+EU%3F%0D%0AA%3A+Yes.%0D%0A%09Q%2813.1%29%3AGOTO%3AUSERS%0D%0AA%3A+No%0D%0A%09DOC%2813.2%29%3A%3Cli%3EWe+do+not+have+any+users%2C+customers%2C+employees%2C+or+vendors+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2813.2%29%3AGOTO%3ALEGACY%0D%0AA%3A+I%27m+not+sure.%0D%0A%09DOC%2813.3%29%3A%3Cli%3EWe+are+not+sure+if+we+have+any+users%2C+customers%2C+employees%2C+or+vendors+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2813.3%29%3AGOTO%3AUSERS%0D%0A%0D%0AQ%28USERS%29%3ADo+you+have+any+users+in+the+EU%3F%0D%0AA%3A+Yes%0D%0A%09DOC%2814.1%29%3A%3Cli%3EWe+have+users+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2814.1%29%3AGOTO%3ACUSTOMERS%0D%0AA%3A+No%0D%0A%09DOC%2814.2%29%3A%3Cli%3EWe+do+not+have+any+users+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2814.2%29%3AGOTO%3ACUSTOMERS%09%0D%0AA%3A+I%27m+not+sure%0D%0A%09DOC%2814.3%29%3A%3Cli%3EWe+are+not+sure+if+we+have+any+users+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2814.3%29%3AGOTO%3ACUSTOMERS%0D%0A%0D%0AQ%28CUSTOMERS%29%3ADo+you+have+any+customers+in+the+EU%3F%0D%0AA%3AYes.%0D%0A%09DOC%2815.1%29%3A%3Cli%3EWe+have+customers+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2815.1%29%3AGOTO%3AEMPLOYEES%0D%0AA%3ANo.%0D%0A%09DOC%2815.2%29%3A%3Cli%3EWe+do+not+have+customers+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2815.2%29%3AGOTO%3AEMPLOYEES%0D%0AA%3AI%27m+not+sure.%0D%0A%09DOC%2815.3%29%3A%3Cli%3EWe+may+have+customers+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2815.3%29%3AGOTO%3AEMPLOYEES%0D%0A%0D%0AQ%28EMPLOYEES%29%3ADo+you+have+any+employees+in+the+EU%3F%0D%0AA%3AYes.%0D%0A%09DOC%2816.1%29%3A%3Cli%3EWe+have+employees+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2816.1%29%3AGOTO%3AVENDORS%0D%0AA%3ANo.%0D%0A%09DOC%2816.2%29%3A%3Cli%3EWe+do+not+have+employees+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2816.2%29%3AGOTO%3AVENDORS%0D%0AA%3AI%27m+not+sure.%0D%0A%09DOC%2816.3%29%3A%3Cli%3EWe+may+have+employees+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2816.3%29%3AGOTO%3AVENDORS%0D%0A%0D%0AQ%28VENDORS%29%3ADo+you+have+any+vendors+in+the+EU%3F%0D%0AA%3AYes.%0D%0A%09DOC%2817.1%29%3A%3Cli%3EWe+have+vendors+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2817.1%29%3AGOTO%3ALEGACY%0D%0AA%3ANo.%0D%0A%09DOC%2817.2%29%3A%3Cli%3EWe+do+not+have+vendors+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2817.2%29%3AGOTO%3ALEGACY%0D%0AA%3AI%27m+not+sure.%0D%0A%09DOC%2817.3%29%3A%3Cli%3EWe+may+have+vendors+in+the+EU.%3C%2Fli%3E%0D%0A%09Q%2817.3%29%3AGOTO%3ALEGACY%0D%0A%0D%0AQ%28LEGACY%29%3ADo+you+have+any+legacy+customer+data%3F%0D%0AA%3A+Yes%0D%0A%09DOC%2818.1%29%3A%3Cli%3EWe+have+legacy+customer+data.%3C%2Fli%3E%0D%0A%09Q%2818.1%29%3AGOTO%3ACHECKIN%0D%0AA%3A+No%0D%0A%09DOC%2818.2%29%3A%3Cli%3EWe+do+not+have+legacy+customer+data.%3C%2Fli%3E%0D%0A%09Q%2818.2%29%3AGOTO%3ACHECKIN%0D%0AA%3A+I%27m+not+sure%0D%0A%09DOC%2818.3%29%3A%3Cli%3EI+am+not+sure+if+we+have+any+legacy+customer+data.%3C%2Fli%3E%0D%0A%09Q%2818.3%29%3AGOTO%3ACHECKIN%0D%0A%0D%0AQ%28CHECKIN%29%3AHow+are+you+doing+so+far%3F%0D%0AA%3A+I%27m+okay.%0D%0A%09DOC%2819.1%29%3A+%3Cul%3E%3C%2Fp%3E%0D%0A%09Q%2819.1%29%3A++Fair+enough.++We%27re+almost+done.++Hang+in+there%21GOTO%3ASIZE%0D%0AA%3A+I%27m+tired.%0D%0A%09Q%2819.2%29%3A++I+wish+I+could+empathize.++I%27m+a+computer%2C+so+I+don%27t+get+tired.GOTO%3ASIZE%0D%0AA%3A+I%22m+hungry.%0D%0A%09Q%2819.3%29%3A++Me+too%21++Just+kidding.GOTO%3ASIZE%0D%0A%0D%0AQ%28SIZE%29%3AHow+many+employees+do+you+have%3F%0D%0AA%3A+250+or+more.%0D%0A%09DOC%2820.1%29%3A%3Cbr%3E%3Cbr%3EBecause+of+our+size%2C+we+may+need+to+appoint+a+Data+Protection+Officer+%28DPO%29.%0D%0A%09Q%2820.1%29%3AGOTO%3AHEAD1%0D%0AA%3A+Fewer+than+250.%0D%0A%09DOC%2820.2%29%3A+%3Cbr%3E%3Cbr%3EBecause+of+our+size%2C+we+probably+won%27t+%3Ci%3Eneed%3C%2FI%3E+to+appoint+a+Data+Protection+Officer+%28DPO%29%2C+but+we+have+some+questions+about+this+requirement.%0D%0A%09Q%2820.2%29%3AGOTO%3AHEAD1%0D%0AA%3A+I%27m+not+sure.%0D%0A%09DOC%2820.3%29%3A%3Cbr%3E%3Cbr%3E%3ESince+we+don%27t+know+exactly+how+many+employees+we+have%2C+we+would+like+to+look+into+the+GDPR+requirements+that+discuss+the+appointment+of+a+Data+Protection+Office+%28DPO%29.%0D%0A%09Q%2820.3%29%3AGOTO%3AHEAD1%0D%0A%0D%0AQ%28HEAD1%29%3A+We%27re+almost+done%21%0D%0AA%3AOkay%21%0D%0A%09DOC%2821.1%29%3A+%3Cbr%3EWe+consulted+the+%3Ca+href%3D%22https%3A%2F%2Fwww.brooklaw.edu%2Facademics%2Fclinicalprogram%2Fblip%2Faboutblip%3F%22+target%3D%22_blank%22%3ELTL+GDPR+Learning+Tool%3C%2Fa%3E%2C+to+learn+more+about+the+GDPR+and+how+it+might+affect+our+business.++We+look+forward+to+speaking+with+you+to+learn+more+about+how+to+ensure+our+compliance+with+the+GDPR.%3Cbr%3E%3Cbr%3EWarm+Regards%2C%3Cbr%3E%3Cx%3EUSER_NAME%3C%2Fx%3E%3Cbr%3E%3Ci%3E%3Cx%3EBIZ_NAME%3C%2Fx%3E%3C%2Fi%3E%0D%0A%09Q%2821.1%29%3AGOTO%3Areadyquery%0D%0A%0D%0AQ%28readyquery%29%3A+Are+you+ready+to+see+your+talking+points%3F%0D%0AA%5Bjavascript%3Asubmit2%28%27http%3A%2F%2Fwww.qnamarkup.org%2Fdoc%2Fparse%2Fhtml%2F%27%2C+%27POST%27%2C+%27t%27%2C+%27GDPR+Talking+Points%27%29%5D%3A+Yes%2C+as+text+on+a+web-based+editor.%0D%0A%09Q%2822.1%29%3A+Thanks%21++And+good+luck%21%0D%0AA%5Bjavascript%3Asave2%28%27GDPR_Talking_Points_Markdown.txt%27%2Cdoc%28%29%29%3B%5D%3A+As+a+file+I+can+save+%28best+for+pasting+into+a+markdown+editor%29.%0D%0A%09Q%2822.2%29%3A+Thanks%21++And+good+luck%21%0D%0AA%5Bjavascript%3Amail2%28%27the+email+of+your+lawyer%27%2C%27GDPR+Questions%27%2Cdoc%28%29%29%5D%3A+As+an+email.%0D%0A%09Q%2822.3%29%3A+Thanks%21++And+good+luck%21++%3Cbr%3E%3Cbr%3E+If+you+have+further+questions%2C+you+can+can+request+service+from+%3Ca+href%3D%22https%3A%2F%2Fapplications.brooklaw.edu%2Fblip%2FPages%2FBLIPIntakeForm.aspx%22%3EBLIP%3C%2Fa%3E.%0D%0A%0D%0AQ%28ENDRUN%29%3A+Thanks+for+stopping+by%21%0D%0A%0D%0A%3C%21--Copyright+%28c%29+2018+Mark+Potkewitz--%3E%0D%0A%3C%21--This+is+available+under+the+MIT+License--%3E</div><div id="ondeck" name="ondeck"><div id='Q-1' name='Q-1' style='display:none;'> This is the GDPR letter generation tool.<br><br> It is a work-in-progress, so not all answer fields will be populated, and there may be some broken fields.
+</div><div id='Q-1.1' name='Q-1.1' style='display:none;'> Great.  Thanks for giving it a spin! If you find any errors or broken parts, please <a href="mailto:blip@brooklaw.edu?subject=GDPR%20QnA%20Feedback%20UID20180525">send us a note</a>. Thanks!
+</div><div id='Q-1.1.1' name='Q-1.1.1' style='display:none;'>Thanks.  You're the best!GOTO:2</div><div id='Q-2' name='Q-2' style='display:none;'> Welcome to the LTL GDPR Letter tool. <br><br> We're going to ask you several questions to help identify potential risk areas for you to speak about with your attorney.
+</div><div id='Q-2.1' name='Q-2.1' style='display:none;'> At the end, we'll draft a letter for you to send to your attorney to help identify areas of potential GDPR Compliance risk.
+</div><div id='Q-2.1.1' name='Q-2.1.1' style='display:none;'>GOTO:3</div><div id='Q-3' name='Q-3' style='display:none;'> We're about to get to the good part. <br><br> But, before we do, we need to go over a few things with you.
+</div><div id='Q-3.1' name='Q-3.1' style='display:none;'> This is the second part of the BLIP LTL GDPR Learning Tool.  If you haven't already done so, you should check out that tool by <a href="https://potkewitz.github.io/QnA/GDPR_Learner.html" target="_blank"> clicking here</a>.
+</div><div id='Q-3.1.1' name='Q-3.1.1' style='display:none;'> Great.GOTO:23</div><div id='Q-3.1.2' name='Q-3.1.2' style='display:none;'> The tool has <i>a lot</i> of useful information about the GDPR and how it could affect you and your business.  If you're unfamiliar with the GDPR, it's a good place to start.
+</div><div id='Q-3.1.2.1' name='Q-3.1.2.1' style='display:none;'>GOTO:23</div><div id='Q-3.1.2.2' name='Q-3.1.2.2' style='display:none;'> You really should <a href="https://potkewitz.github.io/GDPR_Learner.html" target="_blank">check it out.</a>
+</div><div id='Q-3.1.2.2.1' name='Q-3.1.2.2.1' style='display:none;'>GOTO:23</div><div id='Q-3.1.2.2.2' name='Q-3.1.2.2.2' style='display:none;'>If you insist.GOTO:4</div><div id='Q-3.1.3' name='Q-3.1.3' style='display:none;'> Oh, okay.  So you're not new at this.  Great!GOTO:4</div><div id='Q-3.1.4' name='Q-3.1.4' style='display:none;'> You really should check that site out first, but if you insist.GOTO:4</div><div id='Q-4' name='Q-4' style='display:none;'> Before we go any further, we need to go over some legal business.
+</div><div id='Q-4.1' name='Q-4.1' style='display:none;'>Okay.  This tool shall not be construed as legal advice of any kind.  If you have any legal questions or concerns, you should contact an attorney.
+</div><div id='Q-4.1.1' name='Q-4.1.1' style='display:none;'> Terrific.  In addition, we are not entering into an agreement to represent you, and nothing in this tool should be understood as an offer to enter into an attorney/client relationship with you.
+</div><div id='Q-4.1.1.1' name='Q-4.1.1.1' style='display:none;'> This tool is meant to help you learn a bit about the GDPR and identify some areas about which you should speak with an attorney.
+</div><div id='Q-4.1.1.1.1' name='Q-4.1.1.1.1' style='display:none;'> And, finally, if you have <i>any</i> legal questions, you should speak with an attorney.
+</div><div id='Q-4.1.1.1.1.1' name='Q-4.1.1.1.1.1' style='display:none;'> Terrific.  Let's get started.GOTO:5</div><div id='Q-5' name='Q-5' style='display:none;'> Alright.  We are going to ask you some information about you and your business soon.  But, do you have any questions for us before we begin?
+</div><div id='Q-5.1' name='Q-5.1' style='display:none;'> What would you like to know?
+</div><div id='Q-5.1.1' name='Q-5.1.1' style='display:none;'> We will ask for some basic biographical information, such as your name, the name of your business, if you have a lawyer and the name of that lawyer.
+</div><div id='Q-5.1.1.1' name='Q-5.1.1.1' style='display:none;'> At the end of this, together we'll have drafted an email outlining some areas you should probably discuss with your lawyer.
+</div><div id='Q-5.1.1.1.1' name='Q-5.1.1.1.1' style='display:none;'> We only use it to populate the email.  <br><br>We provide you with pseudonyms you can use if you'd rather fill that info in youself.
+</div><div id='Q-5.1.1.1.1.1' name='Q-5.1.1.1.1.1' style='display:none;'>GOTO:5.1</div><div id='Q-5.1.2' name='Q-5.1.2' style='display:none;'> Thanks for noticing!  This was built using a markup language called QnA built by <a href="http://www.davidcolarusso.com/attorney/" target="_blank">David Colarusso</a>.  <br><br>You can build your own interactive QnA by visiting the <a href="http://www.qnamarkup.org/" target="_blank">QnA Markup Editor (still in beta)</a>.
+</div><div id='Q-5.1.2.1' name='Q-5.1.2.1' style='display:none;'>GOTO:5.1</div><div id='Q-5.1.2.2' name='Q-5.1.2.2' style='display:none;'>GOTO:6</div><div id='Q-5.2' name='Q-5.2' style='display:none;'> Are you sure?
+</div><div id='Q-5.2.1' name='Q-5.2.1' style='display:none;'>GOTO:6</div><div id='Q-5.2.2' name='Q-5.2.2' style='display:none;'>GOTO:5.1</div><div id='Q-6' name='Q-6' style='display:none;'> What's your full name?
+</div><div id='Q-6.1' name='Q-6.1' style='display:none;'>GOTO:7</div><div id='Q-6.2' name='Q-6.2' style='display:none;'>GOTO:7</div><div id='Q-6.3' name='Q-6.3' style='display:none;'>GOTO:7</div><div id='Q-7' name='Q-7' style='display:none;'> What's your business called?
+</div><div id='Q-7.1' name='Q-7.1' style='display:none;'>GOTO:8</div><div id='Q-7.2' name='Q-7.2' style='display:none;'>GOTO:8</div><div id='Q-8' name='Q-8' style='display:none;'>Does your business have a general counsel, or do you work with a lawyer?
+</div><div id='Q-8.1' name='Q-8.1' style='display:none;'> What's your lawyer's first name?
+</div><div id='D-8.1.1' name='D-8.1.1' style='display:none;'> Dear <x>LAWYER_FIRST</x>,<br><br>
+</div><div id='Q-8.1.1' name='Q-8.1.1' style='display:none;'>GOTO:9</div><div id='D-8.2' name='D-8.2' style='display:none;'> Dear FUTURE LAWYER WE WILL NEED,<br><br>
+</div><div id='Q-8.2' name='Q-8.2' style='display:none;'>GOTO:9</div><div id='Q-9' name='Q-9' style='display:none;'>Okay, that's the end of the optional personal questions.  From here on out, you'll need to answer these questions in order for us to get you accurate answers for the letter to work.
+</div><div id='Q-9.1' name='Q-9.1' style='display:none;'>GOTO:10</div><div id='Q-9.2' name='Q-9.2' style='display:none;'> In order to assess your potential GDPR compliance risks, we will need some information about your business.
+</div><div id='Q-9.2.1' name='Q-9.2.1' style='display:none;'>GOTO:10</div><div id='Q-10' name='Q-10' style='display:none;'> Okay.  Is your firm incorporated in the European Union?
+</div><div id='D-10.1' name='D-10.1' style='display:none;'>  We are incorporated in the EU, and we have some questions about the General Data Protection Regulation (GDPR) and how it might affect our business.  <br><br>We have looked into the regulation a bit and compiled a list of things we would like to discuss with you.
+</div><div id='Q-10.1' name='Q-10.1' style='display:none;'>GOTO:11</div><div id='D-10.2' name='D-10.2' style='display:none;'>  Though we are not incorporated in the EU, we have some questions about the General Data Protection Regulation (GDPR) and how it might affect our business. <br><br>We have looked into the regulation a bit and compiled a list of things we would like to discuss with you.
+</div><div id='Q-10.2' name='Q-10.2' style='display:none;'>GOTO:11</div><div id='D-10.3' name='D-10.3' style='display:none;'>  Although we don't recall where we're incorporated, we have some questions about the General Data Protection Regulation (GDPR) and how it might affect our business. <br><br>We have looked into the regulation a bit and have compiled a list of things we would like to discuss with you.
+</div><div id='Q-10.3' name='Q-10.3' style='display:none;'>GOTO:11</div><div id='Q-11' name='Q-11' style='display:none;'> Do you have any brick and mortar locations in the EU?
+</div><div id='D-11.1' name='D-11.1' style='display:none;'> Since we have at least one brick and mortar location in the EU, we have concerns that we may be subject to the GDPR.  <br><br>We have identified a few major points that we think will help focus our conversation.<<ul>
+</div><div id='Q-11.1' name='Q-11.1' style='display:none;'>GOTO:12</div><div id='D-11.2' name='D-11.2' style='display:none;'> Though we do not have any brick and mortar stores in the EU, we have some concerns that we may be subject to the GDPR. <br><br>We have identified a few major points that we think will help focus our conversation.<ul>
+</div><div id='Q-11.2' name='Q-11.2' style='display:none;'>GOTO:12</div><div id='D-11.3' name='D-11.3' style='display:none;'> We're not sure whether we have any brick and mortar stores in the EU, but we do have some concerns that way may be subject to the GDPR.<br><br>We have identified a few major points that we think will help focus our conversation.<p><ul>
+</div><div id='Q-11.3' name='Q-11.3' style='display:none;'>GOTO:12</div><div id='Q-12' name='Q-12' style='display:none;'> Do you collect data on your users, employees, vendors, or service providers?
+</div><div id='D-12.1' name='D-12.1' style='display:none;'><li>We do collect data on our users.</li>
+</div><div id='Q-12.1' name='Q-12.1' style='display:none;'>GOTO:13</div><div id='D-12.2' name='D-12.2' style='display:none;'><li>We do not collect data on our users.</li>
+</div><div id='Q-12.2' name='Q-12.2' style='display:none;'>GOTO:13</div><div id='D-12.3' name='D-12.3' style='display:none;'><li>We're not not sure if we collect data on our users.</li>
+</div><div id='Q-12.3' name='Q-12.3' style='display:none;'>GOTO:13</div><div id='Q-13' name='Q-13' style='display:none;'>Do you have any users, customers, employees, or vendors in the EU?
+</div><div id='Q-13.1' name='Q-13.1' style='display:none;'>GOTO:14</div><div id='D-13.2' name='D-13.2' style='display:none;'><li>We do not have any users, customers, employees, or vendors in the EU.</li>
+</div><div id='Q-13.2' name='Q-13.2' style='display:none;'>GOTO:18</div><div id='D-13.3' name='D-13.3' style='display:none;'><li>We are not sure if we have any users, customers, employees, or vendors in the EU.</li>
+</div><div id='Q-13.3' name='Q-13.3' style='display:none;'>GOTO:14</div><div id='Q-14' name='Q-14' style='display:none;'>Do you have any users in the EU?
+</div><div id='D-14.1' name='D-14.1' style='display:none;'><li>We have users in the EU.</li>
+</div><div id='Q-14.1' name='Q-14.1' style='display:none;'>GOTO:15</div><div id='D-14.2' name='D-14.2' style='display:none;'><li>We do not have any users in the EU.</li>
+</div><div id='Q-14.2' name='Q-14.2' style='display:none;'>GOTO:15</div><div id='D-14.3' name='D-14.3' style='display:none;'><li>We are not sure if we have any users in the EU.</li>
+</div><div id='Q-14.3' name='Q-14.3' style='display:none;'>GOTO:15</div><div id='Q-15' name='Q-15' style='display:none;'>Do you have any customers in the EU?
+</div><div id='D-15.1' name='D-15.1' style='display:none;'><li>We have customers in the EU.</li>
+</div><div id='Q-15.1' name='Q-15.1' style='display:none;'>GOTO:16</div><div id='D-15.2' name='D-15.2' style='display:none;'><li>We do not have customers in the EU.</li>
+</div><div id='Q-15.2' name='Q-15.2' style='display:none;'>GOTO:16</div><div id='D-15.3' name='D-15.3' style='display:none;'><li>We may have customers in the EU.</li>
+</div><div id='Q-15.3' name='Q-15.3' style='display:none;'>GOTO:16</div><div id='Q-16' name='Q-16' style='display:none;'>Do you have any employees in the EU?
+</div><div id='D-16.1' name='D-16.1' style='display:none;'><li>We have employees in the EU.</li>
+</div><div id='Q-16.1' name='Q-16.1' style='display:none;'>GOTO:17</div><div id='D-16.2' name='D-16.2' style='display:none;'><li>We do not have employees in the EU.</li>
+</div><div id='Q-16.2' name='Q-16.2' style='display:none;'>GOTO:17</div><div id='D-16.3' name='D-16.3' style='display:none;'><li>We may have employees in the EU.</li>
+</div><div id='Q-16.3' name='Q-16.3' style='display:none;'>GOTO:17</div><div id='Q-17' name='Q-17' style='display:none;'>Do you have any vendors in the EU?
+</div><div id='D-17.1' name='D-17.1' style='display:none;'><li>We have vendors in the EU.</li>
+</div><div id='Q-17.1' name='Q-17.1' style='display:none;'>GOTO:18</div><div id='D-17.2' name='D-17.2' style='display:none;'><li>We do not have vendors in the EU.</li>
+</div><div id='Q-17.2' name='Q-17.2' style='display:none;'>GOTO:18</div><div id='D-17.3' name='D-17.3' style='display:none;'><li>We may have vendors in the EU.</li>
+</div><div id='Q-17.3' name='Q-17.3' style='display:none;'>GOTO:18</div><div id='Q-18' name='Q-18' style='display:none;'>Do you have any legacy customer data?
+</div><div id='D-18.1' name='D-18.1' style='display:none;'><li>We have legacy customer data.</li>
+</div><div id='Q-18.1' name='Q-18.1' style='display:none;'>GOTO:19</div><div id='D-18.2' name='D-18.2' style='display:none;'><li>We do not have legacy customer data.</li>
+</div><div id='Q-18.2' name='Q-18.2' style='display:none;'>GOTO:19</div><div id='D-18.3' name='D-18.3' style='display:none;'><li>I am not sure if we have any legacy customer data.</li>
+</div><div id='Q-18.3' name='Q-18.3' style='display:none;'>GOTO:19</div><div id='Q-19' name='Q-19' style='display:none;'>How are you doing so far?
+</div><div id='D-19.1' name='D-19.1' style='display:none;'> <ul></p>
+</div><div id='Q-19.1' name='Q-19.1' style='display:none;'>  Fair enough.  We're almost done.  Hang in there!GOTO:20</div><div id='Q-19.2' name='Q-19.2' style='display:none;'>  I wish I could empathize.  I'm a computer, so I don't get tired.GOTO:20</div><div id='Q-19.3' name='Q-19.3' style='display:none;'>  Me too!  Just kidding.GOTO:20</div><div id='Q-20' name='Q-20' style='display:none;'>How many employees do you have?
+</div><div id='D-20.1' name='D-20.1' style='display:none;'><br><br>Because of our size, we may need to appoint a Data Protection Officer (DPO).
+</div><div id='Q-20.1' name='Q-20.1' style='display:none;'>GOTO:21</div><div id='D-20.2' name='D-20.2' style='display:none;'> <br><br>Because of our size, we probably won't <i>need</I> to appoint a Data Protection Officer (DPO), but we have some questions about this requirement.
+</div><div id='Q-20.2' name='Q-20.2' style='display:none;'>GOTO:21</div><div id='D-20.3' name='D-20.3' style='display:none;'><br><br>>Since we don't know exactly how many employees we have, we would like to look into the GDPR requirements that discuss the appointment of a Data Protection Office (DPO).
+</div><div id='Q-20.3' name='Q-20.3' style='display:none;'>GOTO:21</div><div id='Q-21' name='Q-21' style='display:none;'> We're almost done!
+</div><div id='D-21.1' name='D-21.1' style='display:none;'> <br>We consulted the <a href="https://www.brooklaw.edu/academics/clinicalprogram/blip/aboutblip?" target="_blank">LTL GDPR Learning Tool</a>, to learn more about the GDPR and how it might affect our business.  We look forward to speaking with you to learn more about how to ensure our compliance with the GDPR.<br><br>Warm Regards,<br><x>USER_NAME</x><br><i><x>BIZ_NAME</x></i>
+</div><div id='Q-21.1' name='Q-21.1' style='display:none;'>GOTO:22</div><div id='Q-22' name='Q-22' style='display:none;'> Are you ready to see your talking points?
+</div><div id='Q-22.1' name='Q-22.1' style='display:none;'> Thanks!  And good luck!
+</div><div id='Q-22.2' name='Q-22.2' style='display:none;'> Thanks!  And good luck!
+</div><div id='Q-22.3' name='Q-22.3' style='display:none;'> Thanks!  And good luck!  <br><br> If you have further questions, you can can request service from <a href="https://applications.brooklaw.edu/blip/Pages/BLIPIntakeForm.aspx">BLIP</a>.
+
+</div><div id='Q-23' name='Q-23' style='display:none;'> Thanks for stopping by!
+
+<!--Copyright (c) 2018 Mark Potkewitz-->
+<!--This is available under the MIT License--></div><div id='A-1.1' name='A-1.1' style='display:none;'> I understand.
+</div><div id='A-href-1.1' name='A-href-1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1' name='A-target-1.1' style='display:none;'></div><div id='X-1.1' name='X-1.1' style='display:none;'>I understand.</div><div id='A-1.1.1' name='A-1.1.1' style='display:none;'>Okay!  We will!
+</div><div id='A-href-1.1.1' name='A-href-1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1' name='A-target-1.1.1' style='display:none;'></div><div id='X-1.1.1' name='X-1.1.1' style='display:none;'>Okay!  We will!</div><div id='A-2.1' name='A-2.1' style='display:none;'> Got it.
+</div><div id='A-href-2.1' name='A-href-2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1' name='A-target-2.1' style='display:none;'></div><div id='X-2.1' name='X-2.1' style='display:none;'>Got it.</div><div id='A-2.1.1' name='A-2.1.1' style='display:none;'> Got it.
+</div><div id='A-href-2.1.1' name='A-href-2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1' name='A-target-2.1.1' style='display:none;'></div><div id='X-2.1.1' name='X-2.1.1' style='display:none;'>Got it.</div><div id='A-3.1' name='A-3.1' style='display:none;'> Okay, I'm ready.
+</div><div id='A-href-3.1' name='A-href-3.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1' name='A-target-3.1' style='display:none;'></div><div id='X-3.1' name='X-3.1' style='display:none;'>Okay, I'm ready.</div><div id='A-3.1.1' name='A-3.1.1' style='display:none;'> Wow.  Okay.  Thanks.  I haven't been to that site yet and will go right now!
+</div><div id='A-href-3.1.1' name='A-href-3.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1' name='A-target-3.1.1' style='display:none;'></div><div id='X-3.1.1' name='X-3.1.1' style='display:none;'>Wow.  Okay.  Thanks.  I haven't been to that site yet and will go right now!</div><div id='A-3.1.2' name='A-3.1.2' style='display:none;'> Why should I check out that tool?
+</div><div id='A-href-3.1.2' name='A-href-3.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2' name='A-target-3.1.2' style='display:none;'></div><div id='X-3.1.2' name='X-3.1.2' style='display:none;'>Why should I check out that tool?</div><div id='A-3.1.2.1' name='A-3.1.2.1' style='display:none;'> Okay.  I'll check it out.
+</div><div id='A-href-3.1.2.1' name='A-href-3.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2.1' name='A-target-3.1.2.1' style='display:none;'></div><div id='X-3.1.2.1' name='X-3.1.2.1' style='display:none;'>Okay.  I'll check it out.</div><div id='A-3.1.2.2' name='A-3.1.2.2' style='display:none;'> Meh.  Not for me.  I'd like to stick with this.
+</div><div id='A-href-3.1.2.2' name='A-href-3.1.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2.2' name='A-target-3.1.2.2' style='display:none;'></div><div id='X-3.1.2.2' name='X-3.1.2.2' style='display:none;'>Meh.  Not for me.  I'd like to stick with this.</div><div id='A-3.1.2.2.1' name='A-3.1.2.2.1' style='display:none;'> Okay.  You've convinced me.
+</div><div id='A-href-3.1.2.2.1' name='A-href-3.1.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2.2.1' name='A-target-3.1.2.2.1' style='display:none;'></div><div id='X-3.1.2.2.1' name='X-3.1.2.2.1' style='display:none;'>Okay.  You've convinced me.</div><div id='A-3.1.2.2.2' name='A-3.1.2.2.2' style='display:none;'> I would really rather not.  I'm already <i>here</i> and would like to move on.
+</div><div id='A-href-3.1.2.2.2' name='A-href-3.1.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2.2.2' name='A-target-3.1.2.2.2' style='display:none;'></div><div id='X-3.1.2.2.2' name='X-3.1.2.2.2' style='display:none;'>I would really rather not.  I'm already <i>here</i> and would like to move on.</div><div id='A-3.1.3' name='A-3.1.3' style='display:none;'> I have already seen the learning tool. That's how I got here!
+</div><div id='A-href-3.1.3' name='A-href-3.1.3' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.3' name='A-target-3.1.3' style='display:none;'></div><div id='X-3.1.3' name='X-3.1.3' style='display:none;'>I have already seen the learning tool. That's how I got here!</div><div id='A-3.1.4' name='A-3.1.4' style='display:none;'> I don't care about that other thing.  I wanna keep checking this out!
+</div><div id='A-href-3.1.4' name='A-href-3.1.4' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.4' name='A-target-3.1.4' style='display:none;'></div><div id='X-3.1.4' name='X-3.1.4' style='display:none;'>I don't care about that other thing.  I wanna keep checking this out!</div><div id='A-4.1' name='A-4.1' style='display:none;'> Oh.  Figures.  Let's do it.
+</div><div id='A-href-4.1' name='A-href-4.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1' name='A-target-4.1' style='display:none;'></div><div id='X-4.1' name='X-4.1' style='display:none;'>Oh.  Figures.  Let's do it.</div><div id='A-4.1.1' name='A-4.1.1' style='display:none;'> I understand that this is not legal advice.
+</div><div id='A-href-4.1.1' name='A-href-4.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1.1' name='A-target-4.1.1' style='display:none;'></div><div id='X-4.1.1' name='X-4.1.1' style='display:none;'>I understand that this is not legal advice.</div><div id='A-4.1.1.1' name='A-4.1.1.1' style='display:none;'> Okay.  I also understand that we are not entering into an attorney/client relationship.
+</div><div id='A-href-4.1.1.1' name='A-href-4.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1.1.1' name='A-target-4.1.1.1' style='display:none;'></div><div id='X-4.1.1.1' name='X-4.1.1.1' style='display:none;'>Okay.  I also understand that we are not entering into an attorney/client relationship.</div><div id='A-4.1.1.1.1' name='A-4.1.1.1.1' style='display:none;'> I think it's great that this is only a learning tool.
+</div><div id='A-href-4.1.1.1.1' name='A-href-4.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1.1.1.1' name='A-target-4.1.1.1.1' style='display:none;'></div><div id='X-4.1.1.1.1' name='X-4.1.1.1.1' style='display:none;'>I think it's great that this is only a learning tool.</div><div id='A-4.1.1.1.1.1' name='A-4.1.1.1.1.1' style='display:none;'> Of course I'll speak with an attorney if I have any legal questions.
+</div><div id='A-href-4.1.1.1.1.1' name='A-href-4.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1.1.1.1.1' name='A-target-4.1.1.1.1.1' style='display:none;'></div><div id='X-4.1.1.1.1.1' name='X-4.1.1.1.1.1' style='display:none;'>Of course I'll speak with an attorney if I have any legal questions.</div><div id='A-5.1' name='A-5.1' style='display:none;'> Yes
+</div><div id='A-href-5.1' name='A-href-5.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1' name='A-target-5.1' style='display:none;'></div><div id='X-5.1' name='X-5.1' style='display:none;'>Yes</div><div id='A-5.1.1' name='A-5.1.1' style='display:none;'> What sort of questions will you be asking?
+</div><div id='A-href-5.1.1' name='A-href-5.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.1' name='A-target-5.1.1' style='display:none;'></div><div id='X-5.1.1' name='X-5.1.1' style='display:none;'>What sort of questions will you be asking?</div><div id='A-5.1.1.1' name='A-5.1.1.1' style='display:none;'> Why do you need this information?
+</div><div id='A-href-5.1.1.1' name='A-href-5.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.1.1' name='A-target-5.1.1.1' style='display:none;'></div><div id='X-5.1.1.1' name='X-5.1.1.1' style='display:none;'>Why do you need this information?</div><div id='A-5.1.1.1.1' name='A-5.1.1.1.1' style='display:none;'> What do you do with that information?
+</div><div id='A-href-5.1.1.1.1' name='A-href-5.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.1.1.1' name='A-target-5.1.1.1.1' style='display:none;'></div><div id='X-5.1.1.1.1' name='X-5.1.1.1.1' style='display:none;'>What do you do with that information?</div><div id='A-5.1.1.1.1.1' name='A-5.1.1.1.1.1' style='display:none;'> Okay.  I have more questions.
+</div><div id='A-href-5.1.1.1.1.1' name='A-href-5.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.1.1.1.1' name='A-target-5.1.1.1.1.1' style='display:none;'></div><div id='X-5.1.1.1.1.1' name='X-5.1.1.1.1.1' style='display:none;'>Okay.  I have more questions.</div><div id='A-5.1.2' name='A-5.1.2' style='display:none;'> This is format is really cool!  What is it?
+</div><div id='A-href-5.1.2' name='A-href-5.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.2' name='A-target-5.1.2' style='display:none;'></div><div id='X-5.1.2' name='X-5.1.2' style='display:none;'>This is format is really cool!  What is it?</div><div id='A-5.1.2.1' name='A-5.1.2.1' style='display:none;'> Thanks.  I have more questions.
+</div><div id='A-href-5.1.2.1' name='A-href-5.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.2.1' name='A-target-5.1.2.1' style='display:none;'></div><div id='X-5.1.2.1' name='X-5.1.2.1' style='display:none;'>Thanks.  I have more questions.</div><div id='A-5.1.2.2' name='A-5.1.2.2' style='display:none;'> Gotcha.  That covers it.  I'm ready to get down to business!
+</div><div id='A-href-5.1.2.2' name='A-href-5.1.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.2.2' name='A-target-5.1.2.2' style='display:none;'></div><div id='X-5.1.2.2' name='X-5.1.2.2' style='display:none;'>Gotcha.  That covers it.  I'm ready to get down to business!</div><div id='A-5.2' name='A-5.2' style='display:none;'> No.
+</div><div id='A-href-5.2' name='A-href-5.2' style='display:none;'>javascript:void('');</div><div id='A-target-5.2' name='A-target-5.2' style='display:none;'></div><div id='X-5.2' name='X-5.2' style='display:none;'>No.</div><div id='A-5.2.1' name='A-5.2.1' style='display:none;'> Yes, I'm sure.
+</div><div id='A-href-5.2.1' name='A-href-5.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.2.1' name='A-target-5.2.1' style='display:none;'></div><div id='X-5.2.1' name='X-5.2.1' style='display:none;'>Yes, I'm sure.</div><div id='A-5.2.2' name='A-5.2.2' style='display:none;'> No.  Actually I have some questions.
+</div><div id='A-href-5.2.2' name='A-href-5.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-5.2.2' name='A-target-5.2.2' style='display:none;'></div><div id='X-5.2.2' name='X-5.2.2' style='display:none;'>No.  Actually I have some questions.</div><div id='A-6.1' name='A-6.1' style='display:none;'><variable></div><div id='A-href-6.1' name='A-href-6.1' style='display:none;'>javascript:void('');</div><div id='A-target-6.1' name='A-target-6.1' style='display:none;'>text</div><div id='X-6.1' name='X-6.1' style='display:none;'>6.1</div><div id='A-6.2' name='A-6.2' style='display:none;'> John Doe.
+</div><div id='A-href-6.2' name='A-href-6.2' style='display:none;'>javascript:void('');</div><div id='A-target-6.2' name='A-target-6.2' style='display:none;'></div><div id='X-6.2' name='X-6.2' style='display:none;'>John Doe.</div><div id='A-6.3' name='A-6.3' style='display:none;'> Jane Doe.
+</div><div id='A-href-6.3' name='A-href-6.3' style='display:none;'>javascript:void('');</div><div id='A-target-6.3' name='A-target-6.3' style='display:none;'></div><div id='X-6.3' name='X-6.3' style='display:none;'>Jane Doe.</div><div id='A-7.1' name='A-7.1' style='display:none;'><variable></div><div id='A-href-7.1' name='A-href-7.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.1' name='A-target-7.1' style='display:none;'>text</div><div id='X-7.1' name='X-7.1' style='display:none;'>7.1</div><div id='A-7.2' name='A-7.2' style='display:none;'> Acme Anvils, Inc.
+</div><div id='A-href-7.2' name='A-href-7.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.2' name='A-target-7.2' style='display:none;'></div><div id='X-7.2' name='X-7.2' style='display:none;'>Acme Anvils, Inc.</div><div id='A-8.1' name='A-8.1' style='display:none;'> Yes.
+</div><div id='A-href-8.1' name='A-href-8.1' style='display:none;'>javascript:void('');</div><div id='A-target-8.1' name='A-target-8.1' style='display:none;'></div><div id='X-8.1' name='X-8.1' style='display:none;'>Yes.</div><div id='A-8.1.1' name='A-8.1.1' style='display:none;'><variable></div><div id='A-href-8.1.1' name='A-href-8.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-8.1.1' name='A-target-8.1.1' style='display:none;'>text</div><div id='X-8.1.1' name='X-8.1.1' style='display:none;'>8.1.1</div><div id='A-8.2' name='A-8.2' style='display:none;'>No.  We don't have a lawyer yet.
+</div><div id='A-href-8.2' name='A-href-8.2' style='display:none;'>javascript:void('');</div><div id='A-target-8.2' name='A-target-8.2' style='display:none;'></div><div id='X-8.2' name='X-8.2' style='display:none;'>No.  We don't have a lawyer yet.</div><div id='A-9.1' name='A-9.1' style='display:none;'> Okay.
+</div><div id='A-href-9.1' name='A-href-9.1' style='display:none;'>javascript:void('');</div><div id='A-target-9.1' name='A-target-9.1' style='display:none;'></div><div id='X-9.1' name='X-9.1' style='display:none;'>Okay.</div><div id='A-9.2' name='A-9.2' style='display:none;'> Why do you need this information?
+</div><div id='A-href-9.2' name='A-href-9.2' style='display:none;'>javascript:void('');</div><div id='A-target-9.2' name='A-target-9.2' style='display:none;'></div><div id='X-9.2' name='X-9.2' style='display:none;'>Why do you need this information?</div><div id='A-9.2.1' name='A-9.2.1' style='display:none;'> Okay.
+</div><div id='A-href-9.2.1' name='A-href-9.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-9.2.1' name='A-target-9.2.1' style='display:none;'></div><div id='X-9.2.1' name='X-9.2.1' style='display:none;'>Okay.</div><div id='A-10.1' name='A-10.1' style='display:none;'> Yes.
+</div><div id='A-href-10.1' name='A-href-10.1' style='display:none;'>javascript:void('');</div><div id='A-target-10.1' name='A-target-10.1' style='display:none;'></div><div id='X-10.1' name='X-10.1' style='display:none;'>Yes.</div><div id='A-10.2' name='A-10.2' style='display:none;'> No.
+</div><div id='A-href-10.2' name='A-href-10.2' style='display:none;'>javascript:void('');</div><div id='A-target-10.2' name='A-target-10.2' style='display:none;'></div><div id='X-10.2' name='X-10.2' style='display:none;'>No.</div><div id='A-10.3' name='A-10.3' style='display:none;'> I'm not sure
+</div><div id='A-href-10.3' name='A-href-10.3' style='display:none;'>javascript:void('');</div><div id='A-target-10.3' name='A-target-10.3' style='display:none;'></div><div id='X-10.3' name='X-10.3' style='display:none;'>I'm not sure</div><div id='A-11.1' name='A-11.1' style='display:none;'> Yes.
+</div><div id='A-href-11.1' name='A-href-11.1' style='display:none;'>javascript:void('');</div><div id='A-target-11.1' name='A-target-11.1' style='display:none;'></div><div id='X-11.1' name='X-11.1' style='display:none;'>Yes.</div><div id='A-11.2' name='A-11.2' style='display:none;'> No.
+</div><div id='A-href-11.2' name='A-href-11.2' style='display:none;'>javascript:void('');</div><div id='A-target-11.2' name='A-target-11.2' style='display:none;'></div><div id='X-11.2' name='X-11.2' style='display:none;'>No.</div><div id='A-11.3' name='A-11.3' style='display:none;'> I'm not sure
+</div><div id='A-href-11.3' name='A-href-11.3' style='display:none;'>javascript:void('');</div><div id='A-target-11.3' name='A-target-11.3' style='display:none;'></div><div id='X-11.3' name='X-11.3' style='display:none;'>I'm not sure</div><div id='A-12.1' name='A-12.1' style='display:none;'> Yes
+</div><div id='A-href-12.1' name='A-href-12.1' style='display:none;'>javascript:void('');</div><div id='A-target-12.1' name='A-target-12.1' style='display:none;'></div><div id='X-12.1' name='X-12.1' style='display:none;'>Yes</div><div id='A-12.2' name='A-12.2' style='display:none;'> No
+</div><div id='A-href-12.2' name='A-href-12.2' style='display:none;'>javascript:void('');</div><div id='A-target-12.2' name='A-target-12.2' style='display:none;'></div><div id='X-12.2' name='X-12.2' style='display:none;'>No</div><div id='A-12.3' name='A-12.3' style='display:none;'> I'm not sure
+</div><div id='A-href-12.3' name='A-href-12.3' style='display:none;'>javascript:void('');</div><div id='A-target-12.3' name='A-target-12.3' style='display:none;'></div><div id='X-12.3' name='X-12.3' style='display:none;'>I'm not sure</div><div id='A-13.1' name='A-13.1' style='display:none;'> Yes.
+</div><div id='A-href-13.1' name='A-href-13.1' style='display:none;'>javascript:void('');</div><div id='A-target-13.1' name='A-target-13.1' style='display:none;'></div><div id='X-13.1' name='X-13.1' style='display:none;'>Yes.</div><div id='A-13.2' name='A-13.2' style='display:none;'> No
+</div><div id='A-href-13.2' name='A-href-13.2' style='display:none;'>javascript:void('');</div><div id='A-target-13.2' name='A-target-13.2' style='display:none;'></div><div id='X-13.2' name='X-13.2' style='display:none;'>No</div><div id='A-13.3' name='A-13.3' style='display:none;'> I'm not sure.
+</div><div id='A-href-13.3' name='A-href-13.3' style='display:none;'>javascript:void('');</div><div id='A-target-13.3' name='A-target-13.3' style='display:none;'></div><div id='X-13.3' name='X-13.3' style='display:none;'>I'm not sure.</div><div id='A-14.1' name='A-14.1' style='display:none;'> Yes
+</div><div id='A-href-14.1' name='A-href-14.1' style='display:none;'>javascript:void('');</div><div id='A-target-14.1' name='A-target-14.1' style='display:none;'></div><div id='X-14.1' name='X-14.1' style='display:none;'>Yes</div><div id='A-14.2' name='A-14.2' style='display:none;'> No
+</div><div id='A-href-14.2' name='A-href-14.2' style='display:none;'>javascript:void('');</div><div id='A-target-14.2' name='A-target-14.2' style='display:none;'></div><div id='X-14.2' name='X-14.2' style='display:none;'>No</div><div id='A-14.3' name='A-14.3' style='display:none;'> I'm not sure
+</div><div id='A-href-14.3' name='A-href-14.3' style='display:none;'>javascript:void('');</div><div id='A-target-14.3' name='A-target-14.3' style='display:none;'></div><div id='X-14.3' name='X-14.3' style='display:none;'>I'm not sure</div><div id='A-15.1' name='A-15.1' style='display:none;'>Yes.
+</div><div id='A-href-15.1' name='A-href-15.1' style='display:none;'>javascript:void('');</div><div id='A-target-15.1' name='A-target-15.1' style='display:none;'></div><div id='X-15.1' name='X-15.1' style='display:none;'>Yes.</div><div id='A-15.2' name='A-15.2' style='display:none;'>No.
+</div><div id='A-href-15.2' name='A-href-15.2' style='display:none;'>javascript:void('');</div><div id='A-target-15.2' name='A-target-15.2' style='display:none;'></div><div id='X-15.2' name='X-15.2' style='display:none;'>No.</div><div id='A-15.3' name='A-15.3' style='display:none;'>I'm not sure.
+</div><div id='A-href-15.3' name='A-href-15.3' style='display:none;'>javascript:void('');</div><div id='A-target-15.3' name='A-target-15.3' style='display:none;'></div><div id='X-15.3' name='X-15.3' style='display:none;'>I'm not sure.</div><div id='A-16.1' name='A-16.1' style='display:none;'>Yes.
+</div><div id='A-href-16.1' name='A-href-16.1' style='display:none;'>javascript:void('');</div><div id='A-target-16.1' name='A-target-16.1' style='display:none;'></div><div id='X-16.1' name='X-16.1' style='display:none;'>Yes.</div><div id='A-16.2' name='A-16.2' style='display:none;'>No.
+</div><div id='A-href-16.2' name='A-href-16.2' style='display:none;'>javascript:void('');</div><div id='A-target-16.2' name='A-target-16.2' style='display:none;'></div><div id='X-16.2' name='X-16.2' style='display:none;'>No.</div><div id='A-16.3' name='A-16.3' style='display:none;'>I'm not sure.
+</div><div id='A-href-16.3' name='A-href-16.3' style='display:none;'>javascript:void('');</div><div id='A-target-16.3' name='A-target-16.3' style='display:none;'></div><div id='X-16.3' name='X-16.3' style='display:none;'>I'm not sure.</div><div id='A-17.1' name='A-17.1' style='display:none;'>Yes.
+</div><div id='A-href-17.1' name='A-href-17.1' style='display:none;'>javascript:void('');</div><div id='A-target-17.1' name='A-target-17.1' style='display:none;'></div><div id='X-17.1' name='X-17.1' style='display:none;'>Yes.</div><div id='A-17.2' name='A-17.2' style='display:none;'>No.
+</div><div id='A-href-17.2' name='A-href-17.2' style='display:none;'>javascript:void('');</div><div id='A-target-17.2' name='A-target-17.2' style='display:none;'></div><div id='X-17.2' name='X-17.2' style='display:none;'>No.</div><div id='A-17.3' name='A-17.3' style='display:none;'>I'm not sure.
+</div><div id='A-href-17.3' name='A-href-17.3' style='display:none;'>javascript:void('');</div><div id='A-target-17.3' name='A-target-17.3' style='display:none;'></div><div id='X-17.3' name='X-17.3' style='display:none;'>I'm not sure.</div><div id='A-18.1' name='A-18.1' style='display:none;'> Yes
+</div><div id='A-href-18.1' name='A-href-18.1' style='display:none;'>javascript:void('');</div><div id='A-target-18.1' name='A-target-18.1' style='display:none;'></div><div id='X-18.1' name='X-18.1' style='display:none;'>Yes</div><div id='A-18.2' name='A-18.2' style='display:none;'> No
+</div><div id='A-href-18.2' name='A-href-18.2' style='display:none;'>javascript:void('');</div><div id='A-target-18.2' name='A-target-18.2' style='display:none;'></div><div id='X-18.2' name='X-18.2' style='display:none;'>No</div><div id='A-18.3' name='A-18.3' style='display:none;'> I'm not sure
+</div><div id='A-href-18.3' name='A-href-18.3' style='display:none;'>javascript:void('');</div><div id='A-target-18.3' name='A-target-18.3' style='display:none;'></div><div id='X-18.3' name='X-18.3' style='display:none;'>I'm not sure</div><div id='A-19.1' name='A-19.1' style='display:none;'> I'm okay.
+</div><div id='A-href-19.1' name='A-href-19.1' style='display:none;'>javascript:void('');</div><div id='A-target-19.1' name='A-target-19.1' style='display:none;'></div><div id='X-19.1' name='X-19.1' style='display:none;'>I'm okay.</div><div id='A-19.2' name='A-19.2' style='display:none;'> I'm tired.
+</div><div id='A-href-19.2' name='A-href-19.2' style='display:none;'>javascript:void('');</div><div id='A-target-19.2' name='A-target-19.2' style='display:none;'></div><div id='X-19.2' name='X-19.2' style='display:none;'>I'm tired.</div><div id='A-19.3' name='A-19.3' style='display:none;'> I"m hungry.
+</div><div id='A-href-19.3' name='A-href-19.3' style='display:none;'>javascript:void('');</div><div id='A-target-19.3' name='A-target-19.3' style='display:none;'></div><div id='X-19.3' name='X-19.3' style='display:none;'>I"m hungry.</div><div id='A-20.1' name='A-20.1' style='display:none;'> 250 or more.
+</div><div id='A-href-20.1' name='A-href-20.1' style='display:none;'>javascript:void('');</div><div id='A-target-20.1' name='A-target-20.1' style='display:none;'></div><div id='X-20.1' name='X-20.1' style='display:none;'>250 or more.</div><div id='A-20.2' name='A-20.2' style='display:none;'> Fewer than 250.
+</div><div id='A-href-20.2' name='A-href-20.2' style='display:none;'>javascript:void('');</div><div id='A-target-20.2' name='A-target-20.2' style='display:none;'></div><div id='X-20.2' name='X-20.2' style='display:none;'>Fewer than 250.</div><div id='A-20.3' name='A-20.3' style='display:none;'> I'm not sure.
+</div><div id='A-href-20.3' name='A-href-20.3' style='display:none;'>javascript:void('');</div><div id='A-target-20.3' name='A-target-20.3' style='display:none;'></div><div id='X-20.3' name='X-20.3' style='display:none;'>I'm not sure.</div><div id='A-21.1' name='A-21.1' style='display:none;'>Okay!
+</div><div id='A-href-21.1' name='A-href-21.1' style='display:none;'>javascript:void('');</div><div id='A-target-21.1' name='A-target-21.1' style='display:none;'></div><div id='X-21.1' name='X-21.1' style='display:none;'>Okay!</div><div id='A-22.1' name='A-22.1' style='display:none;'> Yes, as text on a web-based editor.
+</div><div id='A-href-22.1' name='A-href-22.1' style='display:none;'>javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'GDPR Talking Points')</div><div id='A-target-22.1' name='A-target-22.1' style='display:none;'></div><div id='X-22.1' name='X-22.1' style='display:none;'>Yes, as text on a web-based editor.</div><div id='A-22.2' name='A-22.2' style='display:none;'> As a file I can save (best for pasting into a markdown editor).
+</div><div id='A-href-22.2' name='A-href-22.2' style='display:none;'>javascript:save2('GDPR_Talking_Points_Markdown.txt',doc());</div><div id='A-target-22.2' name='A-target-22.2' style='display:none;'></div><div id='X-22.2' name='X-22.2' style='display:none;'>As a file I can save (best for pasting into a markdown editor).</div><div id='A-22.3' name='A-22.3' style='display:none;'> As an email.
+</div><div id='A-href-22.3' name='A-href-22.3' style='display:none;'>javascript:mail2('the email of your lawyer','GDPR Questions',doc())</div><div id='A-target-22.3' name='A-target-22.3' style='display:none;'></div><div id='X-22.3' name='X-22.3' style='display:none;'>As an email.</div>
+<script>
+	var QVnames = [['1','LETTER_WIP'],['1.1','1.1'],['1.1.1','1.1.1'],['2','LETTER_START'],['2.1','2.1'],['2.1.1','2.1.1'],['3','LETTER_DISCLAIMER'],['3.1','3.1'],['3.1.1','3.1.1'],['3.1.2','3.1.2'],['3.1.2.1','3.1.2.1'],['3.1.2.2','3.1.2.2'],['3.1.2.2.1','3.1.2.2.1'],['3.1.2.2.2','3.1.2.2.2'],['3.1.3','3.1.3'],['3.1.4','3.1.4'],['4','REAL_DISCLAIMER'],['4.1','4.1'],['4.1.1','4.1.1'],['4.1.1.1','4.1.1.1'],['4.1.1.1.1','4.1.1.1.1'],['4.1.1.1.1.1','4.1.1.1.1.1'],['5','PURGATORY'],['5.1','ROUND1'],['5.1.1','5.1.1'],['5.1.1.1','5.1.1.1'],['5.1.1.1.1','5.1.1.1.1'],['5.1.1.1.1.1','5.1.1.1.1.1'],['5.1.2','5.1.2'],['5.1.2.1','5.1.2.1'],['5.1.2.2','5.1.2.2'],['5.2','5.2'],['5.2.1','5.2.1'],['5.2.2','5.2.2'],['6','USER_NAME'],['6.1','6.1'],['6.2','6.2'],['6.3','6.3'],['7','BIZ_NAME'],['7.1','7.1'],['7.2','7.2'],['8','GC_YorN'],['8.1','LAWYER_FIRST'],['8.1.1','8.1.1'],['8.2','8.2'],['9','PD6'],['9.1','9.1'],['9.2','9.2'],['9.2.1','9.2.1'],['10','incorporation_site'],['10.1','10.1'],['10.2','10.2'],['10.3','10.3'],['11','BRICK_AND_MORTAR'],['11.1','11.1'],['11.2','11.2'],['11.3','11.3'],['12','DATA1'],['12.1','12.1'],['12.2','12.2'],['12.3','12.3'],['13','EU_FOCUS'],['13.1','13.1'],['13.2','13.2'],['13.3','13.3'],['14','USERS'],['14.1','14.1'],['14.2','14.2'],['14.3','14.3'],['15','CUSTOMERS'],['15.1','15.1'],['15.2','15.2'],['15.3','15.3'],['16','EMPLOYEES'],['16.1','16.1'],['16.2','16.2'],['16.3','16.3'],['17','VENDORS'],['17.1','17.1'],['17.2','17.2'],['17.3','17.3'],['18','LEGACY'],['18.1','18.1'],['18.2','18.2'],['18.3','18.3'],['19','CHECKIN'],['19.1','19.1'],['19.2','19.2'],['19.3','19.3'],['20','SIZE'],['20.1','20.1'],['20.2','20.2'],['20.3','20.3'],['21','HEAD1'],['21.1','21.1'],['22','readyquery'],['22.1','22.1'],['22.2','22.2'],['22.3','22.3'],['23','ENDRUN']];
+</script>
+</div><textarea id="original" name="original" style="display:none;" disabled="disabled"><div id='Q-1' name='Q-1' style='display:none;'> This is the GDPR letter generation tool.<br><br> It is a work-in-progress, so not all answer fields will be populated, and there may be some broken fields.
+</div><div id='Q-1.1' name='Q-1.1' style='display:none;'> Great.  Thanks for giving it a spin! If you find any errors or broken parts, please <a href="mailto:blip@brooklaw.edu?subject=GDPR%20QnA%20Feedback%20UID20180525">send us a note</a>. Thanks!
+</div><div id='Q-1.1.1' name='Q-1.1.1' style='display:none;'>Thanks.  You're the best!GOTO:2</div><div id='Q-2' name='Q-2' style='display:none;'> Welcome to the LTL GDPR Letter tool. <br><br> We're going to ask you several questions to help identify potential risk areas for you to speak about with your attorney.
+</div><div id='Q-2.1' name='Q-2.1' style='display:none;'> At the end, we'll draft a letter for you to send to your attorney to help identify areas of potential GDPR Compliance risk.
+</div><div id='Q-2.1.1' name='Q-2.1.1' style='display:none;'>GOTO:3</div><div id='Q-3' name='Q-3' style='display:none;'> We're about to get to the good part. <br><br> But, before we do, we need to go over a few things with you.
+</div><div id='Q-3.1' name='Q-3.1' style='display:none;'> This is the second part of the BLIP LTL GDPR Learning Tool.  If you haven't already done so, you should check out that tool by <a href="https://potkewitz.github.io/QnA/GDPR_Learner.html" target="_blank"> clicking here</a>.
+</div><div id='Q-3.1.1' name='Q-3.1.1' style='display:none;'> Great.GOTO:23</div><div id='Q-3.1.2' name='Q-3.1.2' style='display:none;'> The tool has <i>a lot</i> of useful information about the GDPR and how it could affect you and your business.  If you're unfamiliar with the GDPR, it's a good place to start.
+</div><div id='Q-3.1.2.1' name='Q-3.1.2.1' style='display:none;'>GOTO:23</div><div id='Q-3.1.2.2' name='Q-3.1.2.2' style='display:none;'> You really should <a href="https://potkewitz.github.io/GDPR_Learner.html" target="_blank">check it out.</a>
+</div><div id='Q-3.1.2.2.1' name='Q-3.1.2.2.1' style='display:none;'>GOTO:23</div><div id='Q-3.1.2.2.2' name='Q-3.1.2.2.2' style='display:none;'>If you insist.GOTO:4</div><div id='Q-3.1.3' name='Q-3.1.3' style='display:none;'> Oh, okay.  So you're not new at this.  Great!GOTO:4</div><div id='Q-3.1.4' name='Q-3.1.4' style='display:none;'> You really should check that site out first, but if you insist.GOTO:4</div><div id='Q-4' name='Q-4' style='display:none;'> Before we go any further, we need to go over some legal business.
+</div><div id='Q-4.1' name='Q-4.1' style='display:none;'>Okay.  This tool shall not be construed as legal advice of any kind.  If you have any legal questions or concerns, you should contact an attorney.
+</div><div id='Q-4.1.1' name='Q-4.1.1' style='display:none;'> Terrific.  In addition, we are not entering into an agreement to represent you, and nothing in this tool should be understood as an offer to enter into an attorney/client relationship with you.
+</div><div id='Q-4.1.1.1' name='Q-4.1.1.1' style='display:none;'> This tool is meant to help you learn a bit about the GDPR and identify some areas about which you should speak with an attorney.
+</div><div id='Q-4.1.1.1.1' name='Q-4.1.1.1.1' style='display:none;'> And, finally, if you have <i>any</i> legal questions, you should speak with an attorney.
+</div><div id='Q-4.1.1.1.1.1' name='Q-4.1.1.1.1.1' style='display:none;'> Terrific.  Let's get started.GOTO:5</div><div id='Q-5' name='Q-5' style='display:none;'> Alright.  We are going to ask you some information about you and your business soon.  But, do you have any questions for us before we begin?
+</div><div id='Q-5.1' name='Q-5.1' style='display:none;'> What would you like to know?
+</div><div id='Q-5.1.1' name='Q-5.1.1' style='display:none;'> We will ask for some basic biographical information, such as your name, the name of your business, if you have a lawyer and the name of that lawyer.
+</div><div id='Q-5.1.1.1' name='Q-5.1.1.1' style='display:none;'> At the end of this, together we'll have drafted an email outlining some areas you should probably discuss with your lawyer.
+</div><div id='Q-5.1.1.1.1' name='Q-5.1.1.1.1' style='display:none;'> We only use it to populate the email.  <br><br>We provide you with pseudonyms you can use if you'd rather fill that info in youself.
+</div><div id='Q-5.1.1.1.1.1' name='Q-5.1.1.1.1.1' style='display:none;'>GOTO:5.1</div><div id='Q-5.1.2' name='Q-5.1.2' style='display:none;'> Thanks for noticing!  This was built using a markup language called QnA built by <a href="http://www.davidcolarusso.com/attorney/" target="_blank">David Colarusso</a>.  <br><br>You can build your own interactive QnA by visiting the <a href="http://www.qnamarkup.org/" target="_blank">QnA Markup Editor (still in beta)</a>.
+</div><div id='Q-5.1.2.1' name='Q-5.1.2.1' style='display:none;'>GOTO:5.1</div><div id='Q-5.1.2.2' name='Q-5.1.2.2' style='display:none;'>GOTO:6</div><div id='Q-5.2' name='Q-5.2' style='display:none;'> Are you sure?
+</div><div id='Q-5.2.1' name='Q-5.2.1' style='display:none;'>GOTO:6</div><div id='Q-5.2.2' name='Q-5.2.2' style='display:none;'>GOTO:5.1</div><div id='Q-6' name='Q-6' style='display:none;'> What's your full name?
+</div><div id='Q-6.1' name='Q-6.1' style='display:none;'>GOTO:7</div><div id='Q-6.2' name='Q-6.2' style='display:none;'>GOTO:7</div><div id='Q-6.3' name='Q-6.3' style='display:none;'>GOTO:7</div><div id='Q-7' name='Q-7' style='display:none;'> What's your business called?
+</div><div id='Q-7.1' name='Q-7.1' style='display:none;'>GOTO:8</div><div id='Q-7.2' name='Q-7.2' style='display:none;'>GOTO:8</div><div id='Q-8' name='Q-8' style='display:none;'>Does your business have a general counsel, or do you work with a lawyer?
+</div><div id='Q-8.1' name='Q-8.1' style='display:none;'> What's your lawyer's first name?
+</div><div id='D-8.1.1' name='D-8.1.1' style='display:none;'> Dear <x>LAWYER_FIRST</x>,<br><br>
+</div><div id='Q-8.1.1' name='Q-8.1.1' style='display:none;'>GOTO:9</div><div id='D-8.2' name='D-8.2' style='display:none;'> Dear FUTURE LAWYER WE WILL NEED,<br><br>
+</div><div id='Q-8.2' name='Q-8.2' style='display:none;'>GOTO:9</div><div id='Q-9' name='Q-9' style='display:none;'>Okay, that's the end of the optional personal questions.  From here on out, you'll need to answer these questions in order for us to get you accurate answers for the letter to work.
+</div><div id='Q-9.1' name='Q-9.1' style='display:none;'>GOTO:10</div><div id='Q-9.2' name='Q-9.2' style='display:none;'> In order to assess your potential GDPR compliance risks, we will need some information about your business.
+</div><div id='Q-9.2.1' name='Q-9.2.1' style='display:none;'>GOTO:10</div><div id='Q-10' name='Q-10' style='display:none;'> Okay.  Is your firm incorporated in the European Union?
+</div><div id='D-10.1' name='D-10.1' style='display:none;'>  We are incorporated in the EU, and we have some questions about the General Data Protection Regulation (GDPR) and how it might affect our business.  <br><br>We have looked into the regulation a bit and compiled a list of things we would like to discuss with you.
+</div><div id='Q-10.1' name='Q-10.1' style='display:none;'>GOTO:11</div><div id='D-10.2' name='D-10.2' style='display:none;'>  Though we are not incorporated in the EU, we have some questions about the General Data Protection Regulation (GDPR) and how it might affect our business. <br><br>We have looked into the regulation a bit and compiled a list of things we would like to discuss with you.
+</div><div id='Q-10.2' name='Q-10.2' style='display:none;'>GOTO:11</div><div id='D-10.3' name='D-10.3' style='display:none;'>  Although we don't recall where we're incorporated, we have some questions about the General Data Protection Regulation (GDPR) and how it might affect our business. <br><br>We have looked into the regulation a bit and have compiled a list of things we would like to discuss with you.
+</div><div id='Q-10.3' name='Q-10.3' style='display:none;'>GOTO:11</div><div id='Q-11' name='Q-11' style='display:none;'> Do you have any brick and mortar locations in the EU?
+</div><div id='D-11.1' name='D-11.1' style='display:none;'> Since we have at least one brick and mortar location in the EU, we have concerns that we may be subject to the GDPR.  <br><br>We have identified a few major points that we think will help focus our conversation.<<ul>
+</div><div id='Q-11.1' name='Q-11.1' style='display:none;'>GOTO:12</div><div id='D-11.2' name='D-11.2' style='display:none;'> Though we do not have any brick and mortar stores in the EU, we have some concerns that we may be subject to the GDPR. <br><br>We have identified a few major points that we think will help focus our conversation.<ul>
+</div><div id='Q-11.2' name='Q-11.2' style='display:none;'>GOTO:12</div><div id='D-11.3' name='D-11.3' style='display:none;'> We're not sure whether we have any brick and mortar stores in the EU, but we do have some concerns that way may be subject to the GDPR.<br><br>We have identified a few major points that we think will help focus our conversation.<p><ul>
+</div><div id='Q-11.3' name='Q-11.3' style='display:none;'>GOTO:12</div><div id='Q-12' name='Q-12' style='display:none;'> Do you collect data on your users, employees, vendors, or service providers?
+</div><div id='D-12.1' name='D-12.1' style='display:none;'><li>We do collect data on our users.</li>
+</div><div id='Q-12.1' name='Q-12.1' style='display:none;'>GOTO:13</div><div id='D-12.2' name='D-12.2' style='display:none;'><li>We do not collect data on our users.</li>
+</div><div id='Q-12.2' name='Q-12.2' style='display:none;'>GOTO:13</div><div id='D-12.3' name='D-12.3' style='display:none;'><li>We're not not sure if we collect data on our users.</li>
+</div><div id='Q-12.3' name='Q-12.3' style='display:none;'>GOTO:13</div><div id='Q-13' name='Q-13' style='display:none;'>Do you have any users, customers, employees, or vendors in the EU?
+</div><div id='Q-13.1' name='Q-13.1' style='display:none;'>GOTO:14</div><div id='D-13.2' name='D-13.2' style='display:none;'><li>We do not have any users, customers, employees, or vendors in the EU.</li>
+</div><div id='Q-13.2' name='Q-13.2' style='display:none;'>GOTO:18</div><div id='D-13.3' name='D-13.3' style='display:none;'><li>We are not sure if we have any users, customers, employees, or vendors in the EU.</li>
+</div><div id='Q-13.3' name='Q-13.3' style='display:none;'>GOTO:14</div><div id='Q-14' name='Q-14' style='display:none;'>Do you have any users in the EU?
+</div><div id='D-14.1' name='D-14.1' style='display:none;'><li>We have users in the EU.</li>
+</div><div id='Q-14.1' name='Q-14.1' style='display:none;'>GOTO:15</div><div id='D-14.2' name='D-14.2' style='display:none;'><li>We do not have any users in the EU.</li>
+</div><div id='Q-14.2' name='Q-14.2' style='display:none;'>GOTO:15</div><div id='D-14.3' name='D-14.3' style='display:none;'><li>We are not sure if we have any users in the EU.</li>
+</div><div id='Q-14.3' name='Q-14.3' style='display:none;'>GOTO:15</div><div id='Q-15' name='Q-15' style='display:none;'>Do you have any customers in the EU?
+</div><div id='D-15.1' name='D-15.1' style='display:none;'><li>We have customers in the EU.</li>
+</div><div id='Q-15.1' name='Q-15.1' style='display:none;'>GOTO:16</div><div id='D-15.2' name='D-15.2' style='display:none;'><li>We do not have customers in the EU.</li>
+</div><div id='Q-15.2' name='Q-15.2' style='display:none;'>GOTO:16</div><div id='D-15.3' name='D-15.3' style='display:none;'><li>We may have customers in the EU.</li>
+</div><div id='Q-15.3' name='Q-15.3' style='display:none;'>GOTO:16</div><div id='Q-16' name='Q-16' style='display:none;'>Do you have any employees in the EU?
+</div><div id='D-16.1' name='D-16.1' style='display:none;'><li>We have employees in the EU.</li>
+</div><div id='Q-16.1' name='Q-16.1' style='display:none;'>GOTO:17</div><div id='D-16.2' name='D-16.2' style='display:none;'><li>We do not have employees in the EU.</li>
+</div><div id='Q-16.2' name='Q-16.2' style='display:none;'>GOTO:17</div><div id='D-16.3' name='D-16.3' style='display:none;'><li>We may have employees in the EU.</li>
+</div><div id='Q-16.3' name='Q-16.3' style='display:none;'>GOTO:17</div><div id='Q-17' name='Q-17' style='display:none;'>Do you have any vendors in the EU?
+</div><div id='D-17.1' name='D-17.1' style='display:none;'><li>We have vendors in the EU.</li>
+</div><div id='Q-17.1' name='Q-17.1' style='display:none;'>GOTO:18</div><div id='D-17.2' name='D-17.2' style='display:none;'><li>We do not have vendors in the EU.</li>
+</div><div id='Q-17.2' name='Q-17.2' style='display:none;'>GOTO:18</div><div id='D-17.3' name='D-17.3' style='display:none;'><li>We may have vendors in the EU.</li>
+</div><div id='Q-17.3' name='Q-17.3' style='display:none;'>GOTO:18</div><div id='Q-18' name='Q-18' style='display:none;'>Do you have any legacy customer data?
+</div><div id='D-18.1' name='D-18.1' style='display:none;'><li>We have legacy customer data.</li>
+</div><div id='Q-18.1' name='Q-18.1' style='display:none;'>GOTO:19</div><div id='D-18.2' name='D-18.2' style='display:none;'><li>We do not have legacy customer data.</li>
+</div><div id='Q-18.2' name='Q-18.2' style='display:none;'>GOTO:19</div><div id='D-18.3' name='D-18.3' style='display:none;'><li>I am not sure if we have any legacy customer data.</li>
+</div><div id='Q-18.3' name='Q-18.3' style='display:none;'>GOTO:19</div><div id='Q-19' name='Q-19' style='display:none;'>How are you doing so far?
+</div><div id='D-19.1' name='D-19.1' style='display:none;'> <ul></p>
+</div><div id='Q-19.1' name='Q-19.1' style='display:none;'>  Fair enough.  We're almost done.  Hang in there!GOTO:20</div><div id='Q-19.2' name='Q-19.2' style='display:none;'>  I wish I could empathize.  I'm a computer, so I don't get tired.GOTO:20</div><div id='Q-19.3' name='Q-19.3' style='display:none;'>  Me too!  Just kidding.GOTO:20</div><div id='Q-20' name='Q-20' style='display:none;'>How many employees do you have?
+</div><div id='D-20.1' name='D-20.1' style='display:none;'><br><br>Because of our size, we may need to appoint a Data Protection Officer (DPO).
+</div><div id='Q-20.1' name='Q-20.1' style='display:none;'>GOTO:21</div><div id='D-20.2' name='D-20.2' style='display:none;'> <br><br>Because of our size, we probably won't <i>need</I> to appoint a Data Protection Officer (DPO), but we have some questions about this requirement.
+</div><div id='Q-20.2' name='Q-20.2' style='display:none;'>GOTO:21</div><div id='D-20.3' name='D-20.3' style='display:none;'><br><br>>Since we don't know exactly how many employees we have, we would like to look into the GDPR requirements that discuss the appointment of a Data Protection Office (DPO).
+</div><div id='Q-20.3' name='Q-20.3' style='display:none;'>GOTO:21</div><div id='Q-21' name='Q-21' style='display:none;'> We're almost done!
+</div><div id='D-21.1' name='D-21.1' style='display:none;'> <br>We consulted the <a href="https://www.brooklaw.edu/academics/clinicalprogram/blip/aboutblip?" target="_blank">LTL GDPR Learning Tool</a>, to learn more about the GDPR and how it might affect our business.  We look forward to speaking with you to learn more about how to ensure our compliance with the GDPR.<br><br>Warm Regards,<br><x>USER_NAME</x><br><i><x>BIZ_NAME</x></i>
+</div><div id='Q-21.1' name='Q-21.1' style='display:none;'>GOTO:22</div><div id='Q-22' name='Q-22' style='display:none;'> Are you ready to see your talking points?
+</div><div id='Q-22.1' name='Q-22.1' style='display:none;'> Thanks!  And good luck!
+</div><div id='Q-22.2' name='Q-22.2' style='display:none;'> Thanks!  And good luck!
+</div><div id='Q-22.3' name='Q-22.3' style='display:none;'> Thanks!  And good luck!  <br><br> If you have further questions, you can can request service from <a href="https://applications.brooklaw.edu/blip/Pages/BLIPIntakeForm.aspx">BLIP</a>.
+
+</div><div id='Q-23' name='Q-23' style='display:none;'> Thanks for stopping by!
+
+<!--Copyright (c) 2018 Mark Potkewitz-->
+<!--This is available under the MIT License--></div><div id='A-1.1' name='A-1.1' style='display:none;'> I understand.
+</div><div id='A-href-1.1' name='A-href-1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1' name='A-target-1.1' style='display:none;'></div><div id='X-1.1' name='X-1.1' style='display:none;'>I understand.</div><div id='A-1.1.1' name='A-1.1.1' style='display:none;'>Okay!  We will!
+</div><div id='A-href-1.1.1' name='A-href-1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1' name='A-target-1.1.1' style='display:none;'></div><div id='X-1.1.1' name='X-1.1.1' style='display:none;'>Okay!  We will!</div><div id='A-2.1' name='A-2.1' style='display:none;'> Got it.
+</div><div id='A-href-2.1' name='A-href-2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1' name='A-target-2.1' style='display:none;'></div><div id='X-2.1' name='X-2.1' style='display:none;'>Got it.</div><div id='A-2.1.1' name='A-2.1.1' style='display:none;'> Got it.
+</div><div id='A-href-2.1.1' name='A-href-2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1' name='A-target-2.1.1' style='display:none;'></div><div id='X-2.1.1' name='X-2.1.1' style='display:none;'>Got it.</div><div id='A-3.1' name='A-3.1' style='display:none;'> Okay, I'm ready.
+</div><div id='A-href-3.1' name='A-href-3.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1' name='A-target-3.1' style='display:none;'></div><div id='X-3.1' name='X-3.1' style='display:none;'>Okay, I'm ready.</div><div id='A-3.1.1' name='A-3.1.1' style='display:none;'> Wow.  Okay.  Thanks.  I haven't been to that site yet and will go right now!
+</div><div id='A-href-3.1.1' name='A-href-3.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1' name='A-target-3.1.1' style='display:none;'></div><div id='X-3.1.1' name='X-3.1.1' style='display:none;'>Wow.  Okay.  Thanks.  I haven't been to that site yet and will go right now!</div><div id='A-3.1.2' name='A-3.1.2' style='display:none;'> Why should I check out that tool?
+</div><div id='A-href-3.1.2' name='A-href-3.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2' name='A-target-3.1.2' style='display:none;'></div><div id='X-3.1.2' name='X-3.1.2' style='display:none;'>Why should I check out that tool?</div><div id='A-3.1.2.1' name='A-3.1.2.1' style='display:none;'> Okay.  I'll check it out.
+</div><div id='A-href-3.1.2.1' name='A-href-3.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2.1' name='A-target-3.1.2.1' style='display:none;'></div><div id='X-3.1.2.1' name='X-3.1.2.1' style='display:none;'>Okay.  I'll check it out.</div><div id='A-3.1.2.2' name='A-3.1.2.2' style='display:none;'> Meh.  Not for me.  I'd like to stick with this.
+</div><div id='A-href-3.1.2.2' name='A-href-3.1.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2.2' name='A-target-3.1.2.2' style='display:none;'></div><div id='X-3.1.2.2' name='X-3.1.2.2' style='display:none;'>Meh.  Not for me.  I'd like to stick with this.</div><div id='A-3.1.2.2.1' name='A-3.1.2.2.1' style='display:none;'> Okay.  You've convinced me.
+</div><div id='A-href-3.1.2.2.1' name='A-href-3.1.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2.2.1' name='A-target-3.1.2.2.1' style='display:none;'></div><div id='X-3.1.2.2.1' name='X-3.1.2.2.1' style='display:none;'>Okay.  You've convinced me.</div><div id='A-3.1.2.2.2' name='A-3.1.2.2.2' style='display:none;'> I would really rather not.  I'm already <i>here</i> and would like to move on.
+</div><div id='A-href-3.1.2.2.2' name='A-href-3.1.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2.2.2' name='A-target-3.1.2.2.2' style='display:none;'></div><div id='X-3.1.2.2.2' name='X-3.1.2.2.2' style='display:none;'>I would really rather not.  I'm already <i>here</i> and would like to move on.</div><div id='A-3.1.3' name='A-3.1.3' style='display:none;'> I have already seen the learning tool. That's how I got here!
+</div><div id='A-href-3.1.3' name='A-href-3.1.3' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.3' name='A-target-3.1.3' style='display:none;'></div><div id='X-3.1.3' name='X-3.1.3' style='display:none;'>I have already seen the learning tool. That's how I got here!</div><div id='A-3.1.4' name='A-3.1.4' style='display:none;'> I don't care about that other thing.  I wanna keep checking this out!
+</div><div id='A-href-3.1.4' name='A-href-3.1.4' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.4' name='A-target-3.1.4' style='display:none;'></div><div id='X-3.1.4' name='X-3.1.4' style='display:none;'>I don't care about that other thing.  I wanna keep checking this out!</div><div id='A-4.1' name='A-4.1' style='display:none;'> Oh.  Figures.  Let's do it.
+</div><div id='A-href-4.1' name='A-href-4.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1' name='A-target-4.1' style='display:none;'></div><div id='X-4.1' name='X-4.1' style='display:none;'>Oh.  Figures.  Let's do it.</div><div id='A-4.1.1' name='A-4.1.1' style='display:none;'> I understand that this is not legal advice.
+</div><div id='A-href-4.1.1' name='A-href-4.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1.1' name='A-target-4.1.1' style='display:none;'></div><div id='X-4.1.1' name='X-4.1.1' style='display:none;'>I understand that this is not legal advice.</div><div id='A-4.1.1.1' name='A-4.1.1.1' style='display:none;'> Okay.  I also understand that we are not entering into an attorney/client relationship.
+</div><div id='A-href-4.1.1.1' name='A-href-4.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1.1.1' name='A-target-4.1.1.1' style='display:none;'></div><div id='X-4.1.1.1' name='X-4.1.1.1' style='display:none;'>Okay.  I also understand that we are not entering into an attorney/client relationship.</div><div id='A-4.1.1.1.1' name='A-4.1.1.1.1' style='display:none;'> I think it's great that this is only a learning tool.
+</div><div id='A-href-4.1.1.1.1' name='A-href-4.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1.1.1.1' name='A-target-4.1.1.1.1' style='display:none;'></div><div id='X-4.1.1.1.1' name='X-4.1.1.1.1' style='display:none;'>I think it's great that this is only a learning tool.</div><div id='A-4.1.1.1.1.1' name='A-4.1.1.1.1.1' style='display:none;'> Of course I'll speak with an attorney if I have any legal questions.
+</div><div id='A-href-4.1.1.1.1.1' name='A-href-4.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1.1.1.1.1' name='A-target-4.1.1.1.1.1' style='display:none;'></div><div id='X-4.1.1.1.1.1' name='X-4.1.1.1.1.1' style='display:none;'>Of course I'll speak with an attorney if I have any legal questions.</div><div id='A-5.1' name='A-5.1' style='display:none;'> Yes
+</div><div id='A-href-5.1' name='A-href-5.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1' name='A-target-5.1' style='display:none;'></div><div id='X-5.1' name='X-5.1' style='display:none;'>Yes</div><div id='A-5.1.1' name='A-5.1.1' style='display:none;'> What sort of questions will you be asking?
+</div><div id='A-href-5.1.1' name='A-href-5.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.1' name='A-target-5.1.1' style='display:none;'></div><div id='X-5.1.1' name='X-5.1.1' style='display:none;'>What sort of questions will you be asking?</div><div id='A-5.1.1.1' name='A-5.1.1.1' style='display:none;'> Why do you need this information?
+</div><div id='A-href-5.1.1.1' name='A-href-5.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.1.1' name='A-target-5.1.1.1' style='display:none;'></div><div id='X-5.1.1.1' name='X-5.1.1.1' style='display:none;'>Why do you need this information?</div><div id='A-5.1.1.1.1' name='A-5.1.1.1.1' style='display:none;'> What do you do with that information?
+</div><div id='A-href-5.1.1.1.1' name='A-href-5.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.1.1.1' name='A-target-5.1.1.1.1' style='display:none;'></div><div id='X-5.1.1.1.1' name='X-5.1.1.1.1' style='display:none;'>What do you do with that information?</div><div id='A-5.1.1.1.1.1' name='A-5.1.1.1.1.1' style='display:none;'> Okay.  I have more questions.
+</div><div id='A-href-5.1.1.1.1.1' name='A-href-5.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.1.1.1.1' name='A-target-5.1.1.1.1.1' style='display:none;'></div><div id='X-5.1.1.1.1.1' name='X-5.1.1.1.1.1' style='display:none;'>Okay.  I have more questions.</div><div id='A-5.1.2' name='A-5.1.2' style='display:none;'> This is format is really cool!  What is it?
+</div><div id='A-href-5.1.2' name='A-href-5.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.2' name='A-target-5.1.2' style='display:none;'></div><div id='X-5.1.2' name='X-5.1.2' style='display:none;'>This is format is really cool!  What is it?</div><div id='A-5.1.2.1' name='A-5.1.2.1' style='display:none;'> Thanks.  I have more questions.
+</div><div id='A-href-5.1.2.1' name='A-href-5.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.2.1' name='A-target-5.1.2.1' style='display:none;'></div><div id='X-5.1.2.1' name='X-5.1.2.1' style='display:none;'>Thanks.  I have more questions.</div><div id='A-5.1.2.2' name='A-5.1.2.2' style='display:none;'> Gotcha.  That covers it.  I'm ready to get down to business!
+</div><div id='A-href-5.1.2.2' name='A-href-5.1.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.2.2' name='A-target-5.1.2.2' style='display:none;'></div><div id='X-5.1.2.2' name='X-5.1.2.2' style='display:none;'>Gotcha.  That covers it.  I'm ready to get down to business!</div><div id='A-5.2' name='A-5.2' style='display:none;'> No.
+</div><div id='A-href-5.2' name='A-href-5.2' style='display:none;'>javascript:void('');</div><div id='A-target-5.2' name='A-target-5.2' style='display:none;'></div><div id='X-5.2' name='X-5.2' style='display:none;'>No.</div><div id='A-5.2.1' name='A-5.2.1' style='display:none;'> Yes, I'm sure.
+</div><div id='A-href-5.2.1' name='A-href-5.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.2.1' name='A-target-5.2.1' style='display:none;'></div><div id='X-5.2.1' name='X-5.2.1' style='display:none;'>Yes, I'm sure.</div><div id='A-5.2.2' name='A-5.2.2' style='display:none;'> No.  Actually I have some questions.
+</div><div id='A-href-5.2.2' name='A-href-5.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-5.2.2' name='A-target-5.2.2' style='display:none;'></div><div id='X-5.2.2' name='X-5.2.2' style='display:none;'>No.  Actually I have some questions.</div><div id='A-6.1' name='A-6.1' style='display:none;'><variable></div><div id='A-href-6.1' name='A-href-6.1' style='display:none;'>javascript:void('');</div><div id='A-target-6.1' name='A-target-6.1' style='display:none;'>text</div><div id='X-6.1' name='X-6.1' style='display:none;'>6.1</div><div id='A-6.2' name='A-6.2' style='display:none;'> John Doe.
+</div><div id='A-href-6.2' name='A-href-6.2' style='display:none;'>javascript:void('');</div><div id='A-target-6.2' name='A-target-6.2' style='display:none;'></div><div id='X-6.2' name='X-6.2' style='display:none;'>John Doe.</div><div id='A-6.3' name='A-6.3' style='display:none;'> Jane Doe.
+</div><div id='A-href-6.3' name='A-href-6.3' style='display:none;'>javascript:void('');</div><div id='A-target-6.3' name='A-target-6.3' style='display:none;'></div><div id='X-6.3' name='X-6.3' style='display:none;'>Jane Doe.</div><div id='A-7.1' name='A-7.1' style='display:none;'><variable></div><div id='A-href-7.1' name='A-href-7.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.1' name='A-target-7.1' style='display:none;'>text</div><div id='X-7.1' name='X-7.1' style='display:none;'>7.1</div><div id='A-7.2' name='A-7.2' style='display:none;'> Acme Anvils, Inc.
+</div><div id='A-href-7.2' name='A-href-7.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.2' name='A-target-7.2' style='display:none;'></div><div id='X-7.2' name='X-7.2' style='display:none;'>Acme Anvils, Inc.</div><div id='A-8.1' name='A-8.1' style='display:none;'> Yes.
+</div><div id='A-href-8.1' name='A-href-8.1' style='display:none;'>javascript:void('');</div><div id='A-target-8.1' name='A-target-8.1' style='display:none;'></div><div id='X-8.1' name='X-8.1' style='display:none;'>Yes.</div><div id='A-8.1.1' name='A-8.1.1' style='display:none;'><variable></div><div id='A-href-8.1.1' name='A-href-8.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-8.1.1' name='A-target-8.1.1' style='display:none;'>text</div><div id='X-8.1.1' name='X-8.1.1' style='display:none;'>8.1.1</div><div id='A-8.2' name='A-8.2' style='display:none;'>No.  We don't have a lawyer yet.
+</div><div id='A-href-8.2' name='A-href-8.2' style='display:none;'>javascript:void('');</div><div id='A-target-8.2' name='A-target-8.2' style='display:none;'></div><div id='X-8.2' name='X-8.2' style='display:none;'>No.  We don't have a lawyer yet.</div><div id='A-9.1' name='A-9.1' style='display:none;'> Okay.
+</div><div id='A-href-9.1' name='A-href-9.1' style='display:none;'>javascript:void('');</div><div id='A-target-9.1' name='A-target-9.1' style='display:none;'></div><div id='X-9.1' name='X-9.1' style='display:none;'>Okay.</div><div id='A-9.2' name='A-9.2' style='display:none;'> Why do you need this information?
+</div><div id='A-href-9.2' name='A-href-9.2' style='display:none;'>javascript:void('');</div><div id='A-target-9.2' name='A-target-9.2' style='display:none;'></div><div id='X-9.2' name='X-9.2' style='display:none;'>Why do you need this information?</div><div id='A-9.2.1' name='A-9.2.1' style='display:none;'> Okay.
+</div><div id='A-href-9.2.1' name='A-href-9.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-9.2.1' name='A-target-9.2.1' style='display:none;'></div><div id='X-9.2.1' name='X-9.2.1' style='display:none;'>Okay.</div><div id='A-10.1' name='A-10.1' style='display:none;'> Yes.
+</div><div id='A-href-10.1' name='A-href-10.1' style='display:none;'>javascript:void('');</div><div id='A-target-10.1' name='A-target-10.1' style='display:none;'></div><div id='X-10.1' name='X-10.1' style='display:none;'>Yes.</div><div id='A-10.2' name='A-10.2' style='display:none;'> No.
+</div><div id='A-href-10.2' name='A-href-10.2' style='display:none;'>javascript:void('');</div><div id='A-target-10.2' name='A-target-10.2' style='display:none;'></div><div id='X-10.2' name='X-10.2' style='display:none;'>No.</div><div id='A-10.3' name='A-10.3' style='display:none;'> I'm not sure
+</div><div id='A-href-10.3' name='A-href-10.3' style='display:none;'>javascript:void('');</div><div id='A-target-10.3' name='A-target-10.3' style='display:none;'></div><div id='X-10.3' name='X-10.3' style='display:none;'>I'm not sure</div><div id='A-11.1' name='A-11.1' style='display:none;'> Yes.
+</div><div id='A-href-11.1' name='A-href-11.1' style='display:none;'>javascript:void('');</div><div id='A-target-11.1' name='A-target-11.1' style='display:none;'></div><div id='X-11.1' name='X-11.1' style='display:none;'>Yes.</div><div id='A-11.2' name='A-11.2' style='display:none;'> No.
+</div><div id='A-href-11.2' name='A-href-11.2' style='display:none;'>javascript:void('');</div><div id='A-target-11.2' name='A-target-11.2' style='display:none;'></div><div id='X-11.2' name='X-11.2' style='display:none;'>No.</div><div id='A-11.3' name='A-11.3' style='display:none;'> I'm not sure
+</div><div id='A-href-11.3' name='A-href-11.3' style='display:none;'>javascript:void('');</div><div id='A-target-11.3' name='A-target-11.3' style='display:none;'></div><div id='X-11.3' name='X-11.3' style='display:none;'>I'm not sure</div><div id='A-12.1' name='A-12.1' style='display:none;'> Yes
+</div><div id='A-href-12.1' name='A-href-12.1' style='display:none;'>javascript:void('');</div><div id='A-target-12.1' name='A-target-12.1' style='display:none;'></div><div id='X-12.1' name='X-12.1' style='display:none;'>Yes</div><div id='A-12.2' name='A-12.2' style='display:none;'> No
+</div><div id='A-href-12.2' name='A-href-12.2' style='display:none;'>javascript:void('');</div><div id='A-target-12.2' name='A-target-12.2' style='display:none;'></div><div id='X-12.2' name='X-12.2' style='display:none;'>No</div><div id='A-12.3' name='A-12.3' style='display:none;'> I'm not sure
+</div><div id='A-href-12.3' name='A-href-12.3' style='display:none;'>javascript:void('');</div><div id='A-target-12.3' name='A-target-12.3' style='display:none;'></div><div id='X-12.3' name='X-12.3' style='display:none;'>I'm not sure</div><div id='A-13.1' name='A-13.1' style='display:none;'> Yes.
+</div><div id='A-href-13.1' name='A-href-13.1' style='display:none;'>javascript:void('');</div><div id='A-target-13.1' name='A-target-13.1' style='display:none;'></div><div id='X-13.1' name='X-13.1' style='display:none;'>Yes.</div><div id='A-13.2' name='A-13.2' style='display:none;'> No
+</div><div id='A-href-13.2' name='A-href-13.2' style='display:none;'>javascript:void('');</div><div id='A-target-13.2' name='A-target-13.2' style='display:none;'></div><div id='X-13.2' name='X-13.2' style='display:none;'>No</div><div id='A-13.3' name='A-13.3' style='display:none;'> I'm not sure.
+</div><div id='A-href-13.3' name='A-href-13.3' style='display:none;'>javascript:void('');</div><div id='A-target-13.3' name='A-target-13.3' style='display:none;'></div><div id='X-13.3' name='X-13.3' style='display:none;'>I'm not sure.</div><div id='A-14.1' name='A-14.1' style='display:none;'> Yes
+</div><div id='A-href-14.1' name='A-href-14.1' style='display:none;'>javascript:void('');</div><div id='A-target-14.1' name='A-target-14.1' style='display:none;'></div><div id='X-14.1' name='X-14.1' style='display:none;'>Yes</div><div id='A-14.2' name='A-14.2' style='display:none;'> No
+</div><div id='A-href-14.2' name='A-href-14.2' style='display:none;'>javascript:void('');</div><div id='A-target-14.2' name='A-target-14.2' style='display:none;'></div><div id='X-14.2' name='X-14.2' style='display:none;'>No</div><div id='A-14.3' name='A-14.3' style='display:none;'> I'm not sure
+</div><div id='A-href-14.3' name='A-href-14.3' style='display:none;'>javascript:void('');</div><div id='A-target-14.3' name='A-target-14.3' style='display:none;'></div><div id='X-14.3' name='X-14.3' style='display:none;'>I'm not sure</div><div id='A-15.1' name='A-15.1' style='display:none;'>Yes.
+</div><div id='A-href-15.1' name='A-href-15.1' style='display:none;'>javascript:void('');</div><div id='A-target-15.1' name='A-target-15.1' style='display:none;'></div><div id='X-15.1' name='X-15.1' style='display:none;'>Yes.</div><div id='A-15.2' name='A-15.2' style='display:none;'>No.
+</div><div id='A-href-15.2' name='A-href-15.2' style='display:none;'>javascript:void('');</div><div id='A-target-15.2' name='A-target-15.2' style='display:none;'></div><div id='X-15.2' name='X-15.2' style='display:none;'>No.</div><div id='A-15.3' name='A-15.3' style='display:none;'>I'm not sure.
+</div><div id='A-href-15.3' name='A-href-15.3' style='display:none;'>javascript:void('');</div><div id='A-target-15.3' name='A-target-15.3' style='display:none;'></div><div id='X-15.3' name='X-15.3' style='display:none;'>I'm not sure.</div><div id='A-16.1' name='A-16.1' style='display:none;'>Yes.
+</div><div id='A-href-16.1' name='A-href-16.1' style='display:none;'>javascript:void('');</div><div id='A-target-16.1' name='A-target-16.1' style='display:none;'></div><div id='X-16.1' name='X-16.1' style='display:none;'>Yes.</div><div id='A-16.2' name='A-16.2' style='display:none;'>No.
+</div><div id='A-href-16.2' name='A-href-16.2' style='display:none;'>javascript:void('');</div><div id='A-target-16.2' name='A-target-16.2' style='display:none;'></div><div id='X-16.2' name='X-16.2' style='display:none;'>No.</div><div id='A-16.3' name='A-16.3' style='display:none;'>I'm not sure.
+</div><div id='A-href-16.3' name='A-href-16.3' style='display:none;'>javascript:void('');</div><div id='A-target-16.3' name='A-target-16.3' style='display:none;'></div><div id='X-16.3' name='X-16.3' style='display:none;'>I'm not sure.</div><div id='A-17.1' name='A-17.1' style='display:none;'>Yes.
+</div><div id='A-href-17.1' name='A-href-17.1' style='display:none;'>javascript:void('');</div><div id='A-target-17.1' name='A-target-17.1' style='display:none;'></div><div id='X-17.1' name='X-17.1' style='display:none;'>Yes.</div><div id='A-17.2' name='A-17.2' style='display:none;'>No.
+</div><div id='A-href-17.2' name='A-href-17.2' style='display:none;'>javascript:void('');</div><div id='A-target-17.2' name='A-target-17.2' style='display:none;'></div><div id='X-17.2' name='X-17.2' style='display:none;'>No.</div><div id='A-17.3' name='A-17.3' style='display:none;'>I'm not sure.
+</div><div id='A-href-17.3' name='A-href-17.3' style='display:none;'>javascript:void('');</div><div id='A-target-17.3' name='A-target-17.3' style='display:none;'></div><div id='X-17.3' name='X-17.3' style='display:none;'>I'm not sure.</div><div id='A-18.1' name='A-18.1' style='display:none;'> Yes
+</div><div id='A-href-18.1' name='A-href-18.1' style='display:none;'>javascript:void('');</div><div id='A-target-18.1' name='A-target-18.1' style='display:none;'></div><div id='X-18.1' name='X-18.1' style='display:none;'>Yes</div><div id='A-18.2' name='A-18.2' style='display:none;'> No
+</div><div id='A-href-18.2' name='A-href-18.2' style='display:none;'>javascript:void('');</div><div id='A-target-18.2' name='A-target-18.2' style='display:none;'></div><div id='X-18.2' name='X-18.2' style='display:none;'>No</div><div id='A-18.3' name='A-18.3' style='display:none;'> I'm not sure
+</div><div id='A-href-18.3' name='A-href-18.3' style='display:none;'>javascript:void('');</div><div id='A-target-18.3' name='A-target-18.3' style='display:none;'></div><div id='X-18.3' name='X-18.3' style='display:none;'>I'm not sure</div><div id='A-19.1' name='A-19.1' style='display:none;'> I'm okay.
+</div><div id='A-href-19.1' name='A-href-19.1' style='display:none;'>javascript:void('');</div><div id='A-target-19.1' name='A-target-19.1' style='display:none;'></div><div id='X-19.1' name='X-19.1' style='display:none;'>I'm okay.</div><div id='A-19.2' name='A-19.2' style='display:none;'> I'm tired.
+</div><div id='A-href-19.2' name='A-href-19.2' style='display:none;'>javascript:void('');</div><div id='A-target-19.2' name='A-target-19.2' style='display:none;'></div><div id='X-19.2' name='X-19.2' style='display:none;'>I'm tired.</div><div id='A-19.3' name='A-19.3' style='display:none;'> I"m hungry.
+</div><div id='A-href-19.3' name='A-href-19.3' style='display:none;'>javascript:void('');</div><div id='A-target-19.3' name='A-target-19.3' style='display:none;'></div><div id='X-19.3' name='X-19.3' style='display:none;'>I"m hungry.</div><div id='A-20.1' name='A-20.1' style='display:none;'> 250 or more.
+</div><div id='A-href-20.1' name='A-href-20.1' style='display:none;'>javascript:void('');</div><div id='A-target-20.1' name='A-target-20.1' style='display:none;'></div><div id='X-20.1' name='X-20.1' style='display:none;'>250 or more.</div><div id='A-20.2' name='A-20.2' style='display:none;'> Fewer than 250.
+</div><div id='A-href-20.2' name='A-href-20.2' style='display:none;'>javascript:void('');</div><div id='A-target-20.2' name='A-target-20.2' style='display:none;'></div><div id='X-20.2' name='X-20.2' style='display:none;'>Fewer than 250.</div><div id='A-20.3' name='A-20.3' style='display:none;'> I'm not sure.
+</div><div id='A-href-20.3' name='A-href-20.3' style='display:none;'>javascript:void('');</div><div id='A-target-20.3' name='A-target-20.3' style='display:none;'></div><div id='X-20.3' name='X-20.3' style='display:none;'>I'm not sure.</div><div id='A-21.1' name='A-21.1' style='display:none;'>Okay!
+</div><div id='A-href-21.1' name='A-href-21.1' style='display:none;'>javascript:void('');</div><div id='A-target-21.1' name='A-target-21.1' style='display:none;'></div><div id='X-21.1' name='X-21.1' style='display:none;'>Okay!</div><div id='A-22.1' name='A-22.1' style='display:none;'> Yes, as text on a web-based editor.
+</div><div id='A-href-22.1' name='A-href-22.1' style='display:none;'>javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'GDPR Talking Points')</div><div id='A-target-22.1' name='A-target-22.1' style='display:none;'></div><div id='X-22.1' name='X-22.1' style='display:none;'>Yes, as text on a web-based editor.</div><div id='A-22.2' name='A-22.2' style='display:none;'> As a file I can save (best for pasting into a markdown editor).
+</div><div id='A-href-22.2' name='A-href-22.2' style='display:none;'>javascript:save2('GDPR_Talking_Points_Markdown.txt',doc());</div><div id='A-target-22.2' name='A-target-22.2' style='display:none;'></div><div id='X-22.2' name='X-22.2' style='display:none;'>As a file I can save (best for pasting into a markdown editor).</div><div id='A-22.3' name='A-22.3' style='display:none;'> As an email.
+</div><div id='A-href-22.3' name='A-href-22.3' style='display:none;'>javascript:mail2('the email of your lawyer','GDPR Questions',doc())</div><div id='A-target-22.3' name='A-target-22.3' style='display:none;'></div><div id='X-22.3' name='X-22.3' style='display:none;'>As an email.</div>
+<script>
+	var QVnames = [['1','LETTER_WIP'],['1.1','1.1'],['1.1.1','1.1.1'],['2','LETTER_START'],['2.1','2.1'],['2.1.1','2.1.1'],['3','LETTER_DISCLAIMER'],['3.1','3.1'],['3.1.1','3.1.1'],['3.1.2','3.1.2'],['3.1.2.1','3.1.2.1'],['3.1.2.2','3.1.2.2'],['3.1.2.2.1','3.1.2.2.1'],['3.1.2.2.2','3.1.2.2.2'],['3.1.3','3.1.3'],['3.1.4','3.1.4'],['4','REAL_DISCLAIMER'],['4.1','4.1'],['4.1.1','4.1.1'],['4.1.1.1','4.1.1.1'],['4.1.1.1.1','4.1.1.1.1'],['4.1.1.1.1.1','4.1.1.1.1.1'],['5','PURGATORY'],['5.1','ROUND1'],['5.1.1','5.1.1'],['5.1.1.1','5.1.1.1'],['5.1.1.1.1','5.1.1.1.1'],['5.1.1.1.1.1','5.1.1.1.1.1'],['5.1.2','5.1.2'],['5.1.2.1','5.1.2.1'],['5.1.2.2','5.1.2.2'],['5.2','5.2'],['5.2.1','5.2.1'],['5.2.2','5.2.2'],['6','USER_NAME'],['6.1','6.1'],['6.2','6.2'],['6.3','6.3'],['7','BIZ_NAME'],['7.1','7.1'],['7.2','7.2'],['8','GC_YorN'],['8.1','LAWYER_FIRST'],['8.1.1','8.1.1'],['8.2','8.2'],['9','PD6'],['9.1','9.1'],['9.2','9.2'],['9.2.1','9.2.1'],['10','incorporation_site'],['10.1','10.1'],['10.2','10.2'],['10.3','10.3'],['11','BRICK_AND_MORTAR'],['11.1','11.1'],['11.2','11.2'],['11.3','11.3'],['12','DATA1'],['12.1','12.1'],['12.2','12.2'],['12.3','12.3'],['13','EU_FOCUS'],['13.1','13.1'],['13.2','13.2'],['13.3','13.3'],['14','USERS'],['14.1','14.1'],['14.2','14.2'],['14.3','14.3'],['15','CUSTOMERS'],['15.1','15.1'],['15.2','15.2'],['15.3','15.3'],['16','EMPLOYEES'],['16.1','16.1'],['16.2','16.2'],['16.3','16.3'],['17','VENDORS'],['17.1','17.1'],['17.2','17.2'],['17.3','17.3'],['18','LEGACY'],['18.1','18.1'],['18.2','18.2'],['18.3','18.3'],['19','CHECKIN'],['19.1','19.1'],['19.2','19.2'],['19.3','19.3'],['20','SIZE'],['20.1','20.1'],['20.2','20.2'],['20.3','20.3'],['21','HEAD1'],['21.1','21.1'],['22','readyquery'],['22.1','22.1'],['22.2','22.2'],['22.3','22.3'],['23','ENDRUN']];
+</script>
+</textarea><textarea id="transcript" name="transcript" style="display:none;" disabled="disabled"></textarea><div style="float:left;width:100%;margin:15px 0 0px 0;border-top: solid 1px #ddd;"><div id=credits class=credits style="display:none;"><div class=credit_text></div></div><p align=center> <a href="https://www.qnamarkup.org/" target=_top>code your own</a></p></div></FORM></div></div>
+<script type="text/javascript">
+	var QNum = 0;
+	var Qhtml = "";
+	var Dhtml = "";
+	var label = "";
+	var GOTOfired = 0;
+	var path = [];
+	var doc_bin = [];
+	var convo_bin = [];
+	var freetext = 0;
+	var goingback = 0;
+
+	$("#conversation input").on("keypress", 'form', function (e) {
+    	var code = e.keyCode || e.which;
+    	if (code == 13) {
+        	e.preventDefault();
+        	return false;
+    	}
+	});
+
+	function answerQ(lb,restart) {
+		currentQ = label;
+		label = lb;
+		Dhtml = 'D-'+label;
+		Qhtml = 'Q-'+label;
+		var Ahtml = 'A-'+label;
+		var Jhtml = 'J-'+QNum;
+		var Xhtml = 'X-'+label;
+		var Xihtml = 'Xi-'+label;
+		
+		var input_error = 0;
+		if (restart == undefined) {
+			var regexp = new RegExp("\<variable\>");
+			//if (document.getElementById(Xihtml)) {
+			//	console.log("document.getElementById("+Xihtml+").value: "+document.getElementById(Xihtml).value);
+			//} else {
+			//	console.log("NO document.getElementById("+Xihtml+").value: ");
+			//}
+			if (document.getElementById(Ahtml).innerHTML.match(regexp)) {
+				document.getElementById(Xihtml).value = document.getElementById(Xihtml).value.replace(/(^\s*|\s*$)/,"");
+				if (document.getElementById(Xihtml).value == "") {
+					input_error = "Your answer appears to be empty.";
+					label = currentQ;
+				} else {
+					document.getElementById(Xihtml).value = document.getElementById(Xihtml).value.replace(/</g,"<");
+					document.getElementById(Xihtml).value = document.getElementById(Xihtml).value.replace(/>/g,">");
+				}
+			} 
+		}
+			
+		if (input_error != 0) {
+			alert(input_error);
+			document.getElementById(Xihtml).focus();			
+		} else {
+			if (restart == undefined) {
+				document.getElementById('QandA').innerHTML += "<div id=\"break-at-"+QNum+"\" class='frame'><div class='full'><div class='ans_text'>"+document.getElementById(Ahtml).innerHTML+"</div></div><div class='ans_arrow'></div></div></div></div>";
+				// insert answer from button
+				if (document.getElementById(valueis(currentQ))) {
+					document.getElementById(valueis(currentQ)).outerHTML='';
+				}
+				if (document.getElementById(Xihtml)) {
+					document.getElementById('QandA').innerHTML = "<textarea style=\"display:none;\" id=\""+valueis(currentQ)+"\" name=\""+valueis(currentQ)+"\">"+document.getElementById(Xihtml).value+"</textarea>\n" + document.getElementById('QandA').innerHTML				
+				} else {
+					document.getElementById('QandA').innerHTML = "<textarea style=\"display:none;\" id=\""+valueis(currentQ)+"\" name=\""+valueis(currentQ)+"\">"+document.getElementById(Xhtml).innerHTML+"</textarea>\n" + document.getElementById('QandA').innerHTML
+				}
+				if (document.getElementById('QandA').innerHTML.match(regexp)) {
+				 	var duplicatevars = new RegExp("id=\""+document.getElementById(Xhtml).innerHTML+"(.)*"+document.getElementById(Xhtml).innerHTML+"\"","g");
+					document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(duplicatevars, "");
+					document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(/\<variable\>(\<\/variable\>)?/, "<input type=hidden id=\""+document.getElementById(Xhtml).innerHTML+"\" name=\""+document.getElementById(Xhtml).innerHTML+"\" value=\""+document.getElementById(Xihtml).value+"\"/>"+document.getElementById(Xihtml).value);
+					//document.getElementById('transcript').value = document.getElementById('transcript').value.replace(/\<variable\>(\<\/variable\>)?/, document.getElementById(Xihtml).value+"\n");
+					var thisvariable = new RegExp("<(X|x)>"+document.getElementById(Xhtml).innerHTML+"<\/(X|x)>","g");
+					//document.getElementById('doc').innerHTML = document.getElementById('doc').innerHTML.replace(thisvariable, document.getElementById(document.getElementById(Xhtml).innerHTML).innerHTML);
+					//document.getElementById('ondeck').innerHTML = document.getElementById('ondeck').innerHTML.replace(thisvariable, document.getElementById(valueis(currentQ)).innerHTML);
+					//console.log("thisvariable: "+thisvariable);
+					//console.log("Variable name: "+valueis(currentQ));
+					//console.log("Variable value: "+document.getElementById(valueis(currentQ)).innerHTML);
+					if(document.getElementById(Ahtml).innerHTML != "") { 
+						//document.getElementById('transcript').value += "USER: "+document.getElementById(Xihtml).value+"\n"; 
+						convo_bin.push("USER: "+document.getElementById(Xihtml).value+"\n");
+					}
+				} else {
+					//document.getElementById('transcript').value += "USER: "+document.getElementById(Ahtml).innerHTML+"\n";
+					convo_bin.push("USER: "+document.getElementById(Ahtml).innerHTML+"\n");
+				}
+				document.getElementById('Choices').innerHTML = '';
+				if (goingback == 0) {
+					setTimeout(function() {renderQnA(Qhtml,Jhtml,Dhtml,restart)}, 300);
+				} else {
+					renderQnA(Qhtml,Jhtml,Dhtml,restart);
+				}
+			} else {
+				document.getElementById('Choices').innerHTML = '';
+				path = [];
+				renderQnA(Qhtml,Jhtml,Dhtml,restart);			
+			}
+
+		}
+		
+	}
+
+
+	function renderQnA(Qht,Jht,Dht,restar) {
+		Dhtml = Dht;
+					
+		GOTOfired = 0;
+		path.push(label);
+
+		swapGOTO(Qht,Jht);
+
+		console.log("After swap: "+GOTOfired);
+
+		if (GOTOfired == 0) {
+			document.getElementById('QandA').innerHTML += "<div id="+Jht+" style=\"float:left;width:100%;height:1px;\"> </div>";
+		}
+		document.getElementById('QandA').innerHTML += "<div class='frame'><div class='full'><div class='question_text'>"+swapvar(document.getElementById(Qhtml).innerHTML)+"</div></div><div class='question_arrow'></div></div>";		
+
+		document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(/(\<br\>){2}/gi,"</div></div><div class='question_arrow'></div></div></div></div><div class='frame'><div class='full'><div class='question_text'>");
+		document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(/(\<br\> \<br\>)/gi,"<br><br>");
+
+		// add question 
+		//document.getElementById('transcript').value += swapvar("BOT: "+ document.getElementById(Qhtml).innerHTML);
+		//document.getElementById('transcript').value = document.getElementById('transcript').value.replace(/(\<br\>){2}/gi,"\nBOT: ");
+		this_text = swapvar("BOT: "+ document.getElementById(Qhtml).innerHTML);
+		this_text = this_text.replace(/(\<br\>){2}/gi,"\nBOT: ");
+		convo_bin.push(this_text);
+				
+		// make push doc into array in doc() cycle through array and put into output
+		// maybe remove doc div
+		if (document.getElementById(Dhtml)) {
+			doc_bin.push([document.getElementById(Dhtml).innerHTML,currentQ]);
+			console.log("Add to Doc ("+Dhtml+"): "+document.getElementById(Dhtml).innerHTML);
+			//document.getElementById('doc').innerHTML += document.getElementById(Dhtml).innerHTML;
+		}
+						
+		tmp = getElementsByIdRegExp("div", "A-"+label+"(\\.{1}\\d){1}$");
+		a_href = getElementsByIdRegExp("div", "A-href-"+label+"(\\.{1}\\d){1}$");
+		a_target = getElementsByIdRegExp("div", "A-target-"+label+"(\\.{1}\\d){1}$");
+		tmp_x = getElementsByIdRegExp("div", "X-"+label+"(\\.{1}\\d){1}$");
+		var Xishere = 0;
+		for ( var i = 0; i < tmp.length; i++ ) {
+			var nextlabel = tmp[i].id.substr(2);
+			var Xihtml = 'Xi-'+nextlabel;
+			var regexp = "\<variable\>";
+			var regexp_js = "^javascript:";
+			var script_call = "";
+			if (tmp[i].innerHTML.match(regexp)) {
+				if (a_href[i].innerHTML.match('^(_blank:)?javascript:')) {
+					script_call = a_href[i].innerHTML.replace(/^(_blank:)?javascript:/gi,"");
+				} else {
+					if (a_href[i].innerHTML.match('^_blank:')) {
+						script_call = "window.open('"+a_href[i].innerHTML.replace(/^_blank:/,"")+"','_blank');";			
+					} else {
+						script_call = "location.href = '"+a_href[i].innerHTML+"';";
+					}
+				}
+				document.getElementById('Choices').innerHTML += "<div class=\"xdiv\"><input type=\""+a_target[i].innerHTML+"\" id=\""+Xihtml+"\" name=\""+Xihtml+"\" class=\"xinput\" onkeypress=\"if (event.keyCode==13){answerQ('"+nextlabel+"');"+script_call+"}\"/><a href=\"javascript:void('');\" class=\"xbutton\" onClick=\"answerQ('"+nextlabel+"');"+script_call+"\"><span class=\"qpad\">Save above text as answer.</span></a></div>";
+				Xishere = Xihtml;
+				freetext = Xihtml;
+			} else if (a_href[i].innerHTML.match(regexp_js) && a_href[i].innerHTML != "javascript:void('');") {
+				tmp[i].innerHTML = tmp[i].innerHTML.replace(/(\<br\>){2}/gi,"<br> <br>");
+				var script_call = a_href[i].innerHTML.replace(/^javascript:/gi,"");
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"qabutton\" onClick=\"answerQ('"+nextlabel+"');"+script_call+"\" "+a_target[i].innerHTML+"><span class=\"qpad\">"+tmp[i].innerHTML+"</span></a>";							
+				freetext = 0;
+			} else {
+				tmp[i].innerHTML = tmp[i].innerHTML.replace(/(\<br\>){2}/gi,"<br> <br>");
+				document.getElementById('Choices').innerHTML += "<a href=\""+a_href[i].innerHTML+"\" class=\"qabutton\" onClick=\"answerQ('"+nextlabel+"');\" "+a_target[i].innerHTML+"><span class=\"qpad\">"+tmp[i].innerHTML+"</span></a>";				
+				freetext = 0;
+			}
+		}			
+
+		if (restar == undefined) {
+			
+			document.getElementById('Choices').innerHTML += "<div class=\"standard_buttons\">";
+			if (QNum > 1) { 
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" onClick=\"goback(QNum);\">GO BACK ONE</a>";
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" style=\"float:right\" onClick=\"startAT('1');\">START OVER</a>";
+			} else if (QNum == 1) {
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" onClick=\"startAT('1');\">GO BACK ONE</a>";
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" style=\"float:right\" onClick=\"startAT('1');\">START OVER</a>";				
+			}
+			document.getElementById('Choices').innerHTML += "</div>"
+		}
+				
+		if (QNum != 0) { 
+			if (goingback == 0) {
+				scroll2Q(Jht,800);           	
+			} else {
+				window.scrollTo(0, document.getElementById(Jht).offsetTop);     		
+			}
+		} else if (restar != undefined) {
+			window.scrollTo(0,0);
+		}
+		if (Xishere != 0 && window.self == window.top) {
+			console.log("Set focus for: "+Xishere);
+			document.getElementById(Xishere).focus();
+		}
+		console.log("Q#: "+QNum);
+		console.log("New Path: "+path);
+		QNum++;
+		goingback = 0;
+					
+	}
+
+	
+	function swapGOTO(QH,JH) {
+		var regex = new RegExp("GOTO:(\d*)(\.\d+)*");
+		if (regex.test(document.getElementById(QH).innerHTML)) {
+			var Qtext = document.getElementById(QH).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/);
+			document.getElementById('QandA').innerHTML += "<div id="+JH+" style=\"float:left;width:100%;height:1px;\"> </div>";
+			// Add question
+			// note I added () around the < to avoid a < followed by a ? which causes problems in php
+			var Qtexttrans = document.getElementById(QH).innerHTML.replace(/(<)?GOTO:(\d*)(.\s*\d+)*>?/,"");
+			Qtexttrans = Qtexttrans.replace(/\s*$/,"");
+			if (Qtexttrans != "") {
+				//document.getElementById('transcript').value += swapvar("BOT: "+Qtexttrans+"\n");
+				convo_bin.push(swapvar("BOT: "+Qtexttrans+"\n"));
+			}
+			if (document.getElementById(QH).innerHTML.match(/^GOTO:(\d*)(.\s*\d+)*/)) {
+				document.getElementById('QandA').innerHTML += document.getElementById(QH).innerHTML.replace(/(<)?GOTO:(\d*)(.\s*\d+)*>?/,"<"+Qtext+">");
+			} else {
+				document.getElementById('QandA').innerHTML += "<div class='frame'><div class='full'><div class='question_text'>"+ swapvar(document.getElementById(QH).innerHTML.replace(/(<)?GOTO:(\d*)(.\s*\d+)*>?/,"<"+Qtext+">"))+"</div></div><div class='question_arrow'></div></div>";						
+			}
+			// replace GOTO with text
+			label = Qtext[0].replace("GOTO:","");
+			Qhtml = 'Q-'+label;
+			if (document.getElementById(Dhtml)) {
+				doc_bin.push([document.getElementById(Dhtml).innerHTML,currentQ]);
+				console.log("Add to Doc ("+Dhtml+"): "+document.getElementById(Dhtml).innerHTML);
+				//document.getElementById('doc').innerHTML += document.getElementById(Dhtml).innerHTML;
+			}
+			Dhtml = 'D-'+label;
+			GOTOfired = 1;
+			console.log("In swap: "+GOTOfired);
+			swapGOTO(Qhtml,JH);
+		}
+	}
+
+	
+	function scroll2Q(id,speed) {
+		var top = document.getElementById(id).offsetTop; //Getting Y of target element
+		console.log("Jump to Y for ("+id+"): "+top);
+		//adapted from https://github.com/Yappli/smooth-scroll
+		var moving_frequency = 5; // Affects performance !
+		var hop_count = speed/moving_frequency
+        var getScrollTopDocumentAtBegin = document.documentElement.scrollTop + document.body.scrollTop;
+        var gap = (top - getScrollTopDocumentAtBegin) / hop_count;
+		for(var i = 1; i <= hop_count; i++)
+        {
+        	(function()
+           	{
+           		var hop_top_position = gap*i;
+           	    setTimeout(function(){  window.scrollTo(0, hop_top_position + getScrollTopDocumentAtBegin); }, moving_frequency*i);
+           	 })();
+        }
+	}
+
+	function getElementsByIdIs(selectorTag, name) {
+		var items = [];
+		var myPosts = document.getElementsByTagName(selectorTag);
+			//omitting undefined null check for brevity
+			if (myPosts[0].id == name) {
+				items.push(myPosts[0]);
+			}
+		
+		return items;
+	}
+
+	function getElementsByIdRegExp(selectorTag, expression) {
+		// note you need to escape \ in the expression with \, i.e., \\ = \
+		var regex = new RegExp(expression);
+		var items = [];
+		var myPosts = document.getElementsByTagName(selectorTag);
+		for (var i = 0; i < myPosts.length; i++) {
+			if (regex.test(myPosts[i].id)) {
+				items.push(myPosts[i]);
+			}
+		}
+		
+		return items;
+	}	
+
+	// startAT QnA
+	function startAT(id) {
+		document.getElementById('ondeck').innerHTML = document.getElementById('original').value;
+		document.getElementById('QandA').innerHTML = "";
+		//document.getElementById('transcript').value = "";
+		doc_bin = [];
+		convo_bin = [];
+		QNum = 0;
+		answerQ(id,'1');
+	}
+		
+	//show funtion
+	function show(id) { 
+   		if (document.getElementById) { // DOM3 = IE5, NS6
+        	document.getElementById(id).style.display = 'block';
+    	} else { 
+        	if (document.layers) {  
+            	document.id.display = 'block';
+        	} else {
+                document.all.id.style.display = 'block';
+        	}
+    	}
+	}
+
+	//hide funtion
+	function hide(id) { 
+    	if (document.getElementById) { // DOM3 = IE5, NS6
+        	document.getElementById(id).style.display = 'none';         
+    	} else { 
+        	if (document.layers) {  
+                document.id.display = 'none';
+        	} else {
+                document.all.id.style.display = 'none';
+        	}
+    	}
+	}
+
+	//show OR hide funtion depends on if element is shown or hidden
+	function shoh(id) { 
+    	if (document.getElementById) { // DOM3 = IE5, NS6
+        	if (document.getElementById(id).style.display == "none"){
+            	document.getElementById(id).style.display = 'block';
+        	} else {
+            	document.getElementById(id).style.display = 'none';         
+        	}   
+    	} else { 
+        	if (document.layers) {  
+            	if (document.id.display == "none"){
+                	document.id.display = 'block';
+            	} else {
+                	document.id.display = 'none';
+            	}
+        	} else {
+            	if (document.all.id.style.visibility == "none"){
+                	document.all.id.style.display = 'block';
+            	} else {
+                	document.all.id.style.display = 'none';
+            	}
+        	}
+    	}
+	}
+	
+	function swapvar(input) {
+		var output; 
+		for(var i = 0; i < QVnames.length; i++) {
+			if (document.getElementById(QVnames[i][1])) {
+				var item = QVnames[i][1].replace(/\./g,"\\.");
+				var varegx = new RegExp("<x>"+item+"<\/x>","gi");
+				//console.log(QVnames[i][1]);
+				input = input.replace(varegx,document.getElementById(QVnames[i][1]).innerHTML);
+			} 
+		}
+		output = input
+		return output
+	}
+	
+	function docforindex(indexID) {
+		for(var i = 0; i < doc_bin.length; i++) {
+			if(doc_bin[i][1] == indexID) {
+				return true;
+			}
+		}
+	}
+	function indexis(variablename) {
+		for(var i = 0; i < QVnames.length; i++) {
+			if(QVnames[i][1] == variablename) {
+				return QVnames[i][0];
+			}
+		}
+	}
+	function valueis(variablekey) {
+		for(var i = 0; i < QVnames.length; i++) {
+			if(QVnames[i][0] == variablekey) {
+				return QVnames[i][1];
+			}
+		}
+	}
+	
+	function look4goto(qn,id) {
+		console.log("GOTO SEARCH: "+id);
+		var qID = "Q-"+id;
+		// If there's a doc in the XXXXXXXXXXXXXXXX, remove it.
+		if (docforindex(path.indexOf(id))) {
+			console.log("DOC FOUND "+id);
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		convo_bin.splice(-2,2);
+		var re = new RegExp("GOTO:(([a-z0-9\._-]*)\s*)$","gi");
+		if (document.getElementById(qID).innerHTML.match(re)) {
+			convo_bin.splice(-1,1);
+			console.log("GOTO FOUND: "+id);
+			textinput = re.exec(document.getElementById(qID).innerHTML)[2]+"";
+			if (docforindex(indexis(textinput))) {
+				document.getElementById("Xi-"+path[qn]).value = document.getElementById(valueis(textinput)).innerHTML;
+				console.log("DOC FOUND "+textinput);
+				doc_bin.splice(doc_bin.length-1,1);
+			}
+			look4goto(qn,textinput);
+		}
+	}
+	
+	function goback(qn) {
+		Qlast = qn - 3
+		qn = qn - 2;
+		label = path[qn];
+		goingback = 1;
+		
+		console.log("GO BACK TO:"+qn);
+		var re = new RegExp('(((^|\\n).*)*)<div id="break-at-'+qn+'" class="frame">((.*)(\\W.*))*', 'g');
+		document.getElementById("QandA").innerHTML = document.getElementById("QandA").innerHTML.replace(re, '$1');
+		document.getElementById('Choices').innerHTML += "<input type=\"hidden\" id=\"Xi-"+path[qn]+"\" name=\"Xi-"+path[qn]+"\" value=\"\">";
+			console.log("####################: "+path[path.length-1]);
+		
+		//look4goto(qn,path[path.length-1]);
+		
+		path.splice(-1,1);
+		convo_bin.splice(-4,4);
+		//convo_bin.splice(-2,2);
+
+		// If there's a doc in the last Q that you're removing, hold on to it.
+		// And put it back after you've removed it. When you rerender the Q.
+		if (document.getElementById("X-"+path[qn]) && document.getElementById(valueis(path[Qlast]))) {
+			document.getElementById("Xi-"+path[qn]).value = document.getElementById(valueis(path[Qlast])).innerHTML;
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		
+		// If there's a doc in the current Q, remove it.
+		if (docforindex(currentQ)) {
+			console.log("DOC FOUND (current) "+currentQ);
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		// If there's a doc in the queued up Q, remove it. 
+		if (document.getElementById(Dhtml)) {
+			console.log("DOC FOUND (ondeck)"+Dhtml);
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		
+		look4goto(qn,path[path.length-1]);
+		
+		if (freetext != 0) {
+			document.getElementById(freetext).value = "";
+		}
+		QNum = qn;
+		loadQ = path[path.length-1];
+		path.splice(-1,1);
+		
+		console.log("Reload ans for: "+loadQ);
+		answerQ(loadQ);
+	}
+
+	function transcript(output) {
+		var convo_output = "";
+		for (var i = 0, len = convo_bin.length; i < len; i++) {
+			convo_output += convo_bin[i];
+		}
+		if (output == 1) {
+			return convo_output;
+		} else {
+			return convo_output.replace(/<[^>]*>/g,"");
+		}
+	}		
+	
+	function doc() {
+		var doc_output = ""; 
+		for (var i = 0, len = doc_bin.length; i < len; i++) {
+			doc_output += doc_bin[i][0];
+		}
+		return swapvar(doc_output);
+	}	
+	
+	function json_str() {
+		
+		var json_list = "{";
+		for(var i = 0; i < QVnames.length; i++) {
+			if (!document.getElementById("Q-"+QVnames[i][0]).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/)) {
+				if (document.getElementById(QVnames[i][1])) {
+					json_list = json_list+'"'+QVnames[i][1]+'":"'+document.getElementById(QVnames[i][1]).innerHTML+'"';
+				} else {
+					json_list = json_list+'"'+QVnames[i][1]+'":"'+'"';
+				}
+				json_list = json_list+",";
+			} 
+			if (i+1 == QVnames.length) {
+				json_list = json_list.replace(/,$/, '');
+				json_list = json_list+"}";
+			}
+		}
+		return json_list;
+	}
+
+	function mail2(to,subject,body) {
+		to = encodeURIComponent(to);
+		subject = encodeURIComponent(subject);
+		body = encodeURIComponent(body);
+		window.location.href = "mailto:"+to+"?subject="+subject+"&body="+body;
+	}
+	
+	function submit2(action,method,docAs,instructions,transcriptAs,jsonAs,target) {
+		document.FORM.action = action;
+		document.FORM.method = method;
+		if (target) {
+			document.FORM.target = target;
+		} else {
+			document.FORM.target = "_self";		
+		}
+		
+		if (docAs) {
+			if (document.getElementsByName(docAs).length == 0) { 
+				var doctext = document.createElement("textarea");
+				doctext.style.display ='none';
+				doctext.name= docAs;
+				doctext.value= doc();
+				document.getElementById('FORM').appendChild(doctext);
+			} else {
+				$('textarea[name='+docAs+']').val(json_str())
+			}
+			if (instructions) {
+				if (document.getElementsByName('i').length == 0) { 
+					var instructtext = document.createElement("textarea");
+					instructtext.type='hidden';
+					instructtext.style.display ='none';
+					instructtext.name= 'i';
+					instructtext.value= instructions;
+					document.getElementById('FORM').appendChild(instructtext);	
+				} else {
+					$('textarea[name=i]').val(json_str())
+				}
+			}
+		}
+		if (transcriptAs) {
+			if (document.getElementsByName(transcriptAs).length == 0) { 
+				var ttext = document.createElement("textarea");
+				ttext.type='hidden';
+				ttext.style.display ='none';
+				ttext.name= transcriptAs;
+				ttext.value= transcript();
+				document.getElementById('FORM').appendChild(ttext);
+			} else {
+				$('textarea[name='+transcriptAs+']').val(json_str())
+			}
+		}
+		if (jsonAs) {
+			if (document.getElementsByName(jsonAs).length == 0) { 
+				var json = document.createElement("textarea");
+				json.type='hidden';
+				json.style.display ='none';
+				json.name= jsonAs;			
+				json.value= json_str();
+				document.getElementById('FORM').appendChild(json);
+			} else {
+				$('textarea[name='+jsonAs+']').val(json_str())
+			}
+		}
+		var ondeckdiv = document.getElementById('ondeck').innerHTML;
+		var rawmarkupdiv = document.getElementById('rawmarkup').innerHTML;
+		document.getElementById('ondeck').innerHTML = "";
+		document.getElementById('rawmarkup').innerHTML = "";
+		document.FORM.submit();
+		document.getElementById('ondeck').innerHTML = ondeckdiv;
+		document.getElementById('rawmarkup').innerHTML = rawmarkupdiv;
+	}
+	
+	function csv() {
+		var csv_list = "";
+		for(var i = 0; i < QVnames.length; i++) {
+			if (!document.getElementById("Q-"+QVnames[i][0]).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/)) {
+				csv_list = csv_list+'"'+QVnames[i][1]+'"';
+				csv_list = csv_list+",";
+			} 
+			if (i+1 == QVnames.length) {
+				csv_list = csv_list.replace(/,$/, '');
+				csv_list = csv_list+"\n";
+			}
+		}
+		for(var i = 0; i < QVnames.length; i++) {
+			if (!document.getElementById("Q-"+QVnames[i][0]).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/)) {
+				if (document.getElementById(QVnames[i][1])) {
+					csv_list = csv_list+'"'+document.getElementById(QVnames[i][1]).innerHTML+'"';
+				} else {
+					csv_list = csv_list+'""';
+				}
+				csv_list = csv_list+",";
+			} 			
+			if (i+1 == QVnames.length) {
+				csv_list = csv_list.replace(/,$/, '');
+				csv_list = csv_list+"\n";
+			}
+		}
+
+		return csv_list;
+	}
+	
+	function getvar(val) {
+		return document.getElementById(val).value;
+	}
+
+	function goto(val) {
+	   answerQ(indexis(val));
+	}
+
+	// h/t http://runnable.com/U5HC9xtufQpsu5aj/use-javascript-to-save-textarea-as-a-txt-file
+	function save2(filename,content)
+	{
+
+	// I'm using file system support as a proxy for support for this feature. 
+	// Check based on one found at: http://blog.teamtreehouse.com/building-an-html5-text-editor-with-the-filesystem-apis
+	// Handle vendor prefixes.
+	window.requestFileSystem = window.requestFileSystem || 
+							   window.webkitRequestFileSystem;
+	// Check for support.
+	if (window.requestFileSystem) {
+	// content = ID of textarea to save
+	// name = name to save file as, including file extension     
+	// grab the content of the form field and place it into a variable
+	//    var textToWrite = document.getElementById(content).value;
+	//  create a new Blob (html5 magic) that conatins the data from your form feild
+		var textFileAsBlob = new Blob([content], {type:'text/plain'});
+		
+	// Specify the name of the file to be saved
+		var fileNamecontentAs = filename;
+		
+	// Optionally allow the user to choose a file name by providing 
+	// an imput field in the HTML and using the collected data here
+	// var fileNamecontentAs = txtFileName.text;
+
+	// create a link for our script to 'click'
+		var downloadLink = document.createElement("a");
+	//  supply the name of the file (from the var above).
+	// you could create the name here but using a var
+	// allows more flexability later.
+		downloadLink.download = fileNamecontentAs;
+	// provide text for the link. This will be hidden so you
+	// can actually use anything you want.
+		downloadLink.innerHTML = "My Hidden Link";
+		
+	// allow our code to work in webkit & Gecko based browsers
+	// without the need for a if / else block.
+		window.URL = window.URL || window.webkitURL;
+			  
+	// Create the link Object.
+		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+	// when link is clicked call a function to remove it from
+	// the DOM in case user wants to save a second file.
+		downloadLink.onclick = destroyClickedElement;
+	// make sure the link is hidden.
+		downloadLink.style.display = "none";
+	// add the link to the DOM
+		document.body.appendChild(downloadLink);
+		
+	// click the new link
+		downloadLink.click();
+	} else {
+		alert('This feature is not supported by your browser.');
+	}
+		
+	}
+
+	function destroyClickedElement(event)
+	{
+	// remove the link from the DOM
+		document.body.removeChild(event.target);
+	}
+
+	// EOF
+
+</script>
+</BODY>
+</HTML>
